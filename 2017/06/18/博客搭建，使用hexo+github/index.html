@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="介绍如何搭建博客"/>
+
+
+
+
+  <meta name="keywords" content="博客搭建," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Hexo">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2017/06/18/博客搭建，使用hexo+github/"/>
+
+
+<meta name="description" content="介绍如何搭建博客">
+<meta name="keywords" content="博客搭建">
+<meta property="og:type" content="article">
+<meta property="og:title" content="博客搭建，使用hexo+github">
+<meta property="og:url" content="http://yoursite.com/2017/06/18/博客搭建，使用hexo+github/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="介绍如何搭建博客">
+<meta property="og:updated_time" content="2018-02-28T16:28:48.173Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="博客搭建，使用hexo+github">
+<meta name="twitter:description" content="介绍如何搭建博客">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> 博客搭建，使用hexo+github - Hexo </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Hexo</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          博客搭建，使用hexo+github
+        
+      </h1>
+
+      <time class="post-time">
+          Jun 18 2017
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>记录一下搭建博客所使用的一些命令，以及参考的一些不错文章，方便以后查看。</p>
+<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><ul>
+<li>github的账号，<a href="https://github.com/" target="_blank" rel="noopener">注册地址</a></li>
+<li>安装node.js，参看<a href="http://blog.csdn.net/tyro_java/article/details/51232458" target="_blank" rel="noopener">nodejs的安装与管理</a></li>
+<li>git管理工具，<a href="https://git-scm.com/download/" target="_blank" rel="noopener">下载地址</a></li>
+</ul>
+<h2 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h2><p>在github上面创建一个仓库，仓库名必须为 <code>账号名.github.io</code>，比如的github账号名是<code>LingChenJie</code>，我的仓库名就是<code>LingChenJie.github.io</code>.</p>
+<blockquote>
+<p>注意：仓库名必须正确；注册后可能需要等上半个小时生效</p>
+</blockquote>
+<h2 id="配置SSH-key"><a href="#配置SSH-key" class="headerlink" title="配置SSH key"></a>配置SSH key</h2><p>右键选择<code>git Bash Here</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ~/. ssh <span class="comment">#检测本机是否存在ssh密钥</span></span><br></pre></td></tr></table></figure>
+<p>提示”<code>No such file or directory</code>“,执行以下命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"邮件地址"</span></span><br></pre></td></tr></table></figure>
+<p>之后回车，提示输入密码，我这里没有输入（最安全的密码就是没有密码），直接再次回车，连续回车三次之后，就会在User目录下生成一个<code>.ssh</code>目录，<code>.ssh</code>目录下就会有一个名为<code>id_rsa.pub</code>的文件，(我的文件所在目录：<code>C:\Users\JieChen\.ssh</code>).</p>
+<p>之后用记事本打开<code>id_rsa.pub</code>文件，复制里面的所有内容;接着打开你的github主页，进入<code>个人设置</code> -&gt; <code>SSH and GPG keys</code> -&gt; <code>New SSH key</code>;最后把粘贴板中的内容复制到<code>Key</code>中，<code>Title</code>的名字自己可以随便起。</p>
+<h2 id="测试SSH-key是否配置成功"><a href="#测试SSH-key是否配置成功" class="headerlink" title="测试SSH key是否配置成功"></a>测试SSH key是否配置成功</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+<p>如果提示<code>Are you sure you want to continue connecting (yes/no)?</code>,输入<code>yes</code>,如果看到<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi LingChenJie! You&apos;ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure></p>
+<p>说明SSH已经配置成功.</p>
+<p>此时还需要配置：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">"LingChenJie"</span>// 你的github用户名，非昵称</span><br><span class="line">$ git config --global user.email  <span class="string">"xxx@qq.com"</span>// 填写你的github注册邮箱</span><br></pre></td></tr></table></figure></p>
+<h2 id="Hexo了解和使用"><a href="#Hexo了解和使用" class="headerlink" title="Hexo了解和使用"></a>Hexo了解和使用</h2><p><a href="http://hexo.io" target="_blank" rel="noopener">Hexo官网</a>，对英文不感冒的同学可以去 <a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">Hexo中文网</a>，另外提供出<a href="https://github.com/hexojs/hexo" target="_blank" rel="noopener">github地址</a>.</p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+<h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><p>进入到你的博客目录下，例如我的是<code>D:\workspace\hexo\blog</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init</span><br></pre></td></tr></table></figure>
+<h4 id="生成静态页面"><a href="#生成静态页面" class="headerlink" title="生成静态页面"></a>生成静态页面</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br></pre></td></tr></table></figure>
+<h4 id="本地启动"><a href="#本地启动" class="headerlink" title="本地启动"></a>本地启动</h4><p>启动本地服务，进行文章预览调试</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
+<p>浏览器输入<code>http://localhost:4000</code>，就可以看到了你的博客首页了预览了。不过这个主题比较相对来说比较low，体现不出个人特色，往往我们需要找到自己喜欢的主题，修改成自己的。</p>
+<h2 id="修改主题"><a href="#修改主题" class="headerlink" title="修改主题"></a>修改主题</h2><p><a href="https://hexo.io/themes/" target="_blank" rel="noopener">官方主题地址</a></p>
+<p>找到你喜欢的主题，进入其github.比如我选择的是<a href="https://github.com/frostfan/hexo-theme-polarbear" target="_blank" rel="noopener">PolarBear</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-renderer-scss --save</span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/frostfan/hexo-theme-polarbear themes/polarbear</span><br></pre></td></tr></table></figure>
+<p>下载的主题可以在<code>themes</code>目录中找到。</p>
+<p>接下来还需要修改<code>_config.yml</code>中的<code>theme: landscape</code> ，改成<code>theme: polarbear</code>.</p>
+<p>执行命令，完成修改后的预览</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clear</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
+<h2 id="上传github"><a href="#上传github" class="headerlink" title="上传github"></a>上传github</h2><p>首先，需要配置<code>_config.yml</code>中有关<code>deploy</code>的相关参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:LingChenJie/LingChenJie.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<p>接着安装发布的插件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>然后就可以发布了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
+<h2 id="写博客"><a href="#写博客" class="headerlink" title="写博客"></a>写博客</h2><p>定位到我们的<code>blog</code>目录下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">'我的第一篇博客'</span></span><br></pre></td></tr></table></figure>
+<p>hexo这时就会在<code>_posts</code>下生成，相关的md文件。打开md文件，开启你的博客之旅吧。如果你对md不了解的话，可以查看<a href="http://blog.csdn.net/kaitiren/article/details/38513715" target="_blank" rel="noopener">这篇文章</a>。</p>
+<h2 id="npm换源"><a href="#npm换源" class="headerlink" title="npm换源"></a>npm换源</h2><p>由于npm的源在国外，所以国内用户使用起来各种不方便。有的时候很可能使用npm下载一些插件出现错误，或者速度很慢，这时就需要使用国内一些优秀的npm镜像来帮助我们。</p>
+<h4 id="淘宝npm镜像"><a href="#淘宝npm镜像" class="headerlink" title="淘宝npm镜像"></a>淘宝npm镜像</h4><ul>
+<li>搜索地址：<code>http://npm.taobao.org/</code></li>
+<li>registry地址：<code>http://registry.npm.taobao.org/</code></li>
+</ul>
+<h4 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h4><p>通过<code>cnpm</code>使用，这样把之前使用<code>npm</code>用<code>cnpm</code>代替即可，执行完下面命令即可使用。不过，好像每次打开<code>bash</code>命令行时都需要重新设置才生效。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+<h2 id="遇到的一些bug"><a href="#遇到的一些bug" class="headerlink" title="遇到的一些bug"></a>遇到的一些bug</h2><p>在执行 <code>hexo d</code>后,出现 <code>error deployer not found:github</code> 的错误</p>
+<p>解决方法：<code>npm install hexo-deployer-git --save</code> 改了之后执行，然后再部署试试</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="http://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html" target="_blank" rel="noopener">使用hexo+github搭建免费个人博客详细教程</a></p>
+<p><a href="https://segmentfault.com/a/1190000004947261" target="_blank" rel="noopener">手把手教你使用Hexo + Github Pages搭建个人独立博客</a></p>
+<p><a href="https://segmentfault.com/a/1190000003088603?_ea=309495" target="_blank" rel="noopener">最新版HEXO配置，HEXO+Github，搭建自己的博客</a></p>
+<p><a href="http://www.jianshu.com/p/0deb70e6f395" target="_blank" rel="noopener">npm换源</a></p>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/博客搭建/">博客搭建</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2018/02/28/hello-world/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Hello World</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2013/12/02/dagger2学习记录/">
+        <span class="next-text nav-default">postName</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2018
+    <span class="footer-author">John Doe.</span>
+    <span class="power-by">
+        由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a> 强力驱动
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
