@@ -42,7 +42,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/06/18/博客搭建，使用hexo+github/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="介绍如何搭建博客">
-<meta property="og:updated_time" content="2018-02-28T16:28:48.173Z">
+<meta property="og:updated_time" content="2018-03-01T08:50:08.528Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="博客搭建，使用hexo+github">
 <meta name="twitter:description" content="介绍如何搭建博客">
@@ -171,8 +171,14 @@
 <p>然后就可以发布了</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
 <h2 id="写博客"><a href="#写博客" class="headerlink" title="写博客"></a>写博客</h2><p>定位到我们的<code>blog</code>目录下</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">'我的第一篇博客'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">'我的第一篇博客'</span> <span class="comment">#新建博客，简写：hexo n</span></span><br></pre></td></tr></table></figure>
 <p>hexo这时就会在<code>_posts</code>下生成，相关的md文件。打开md文件，开启你的博客之旅吧。如果你对md不了解的话，可以查看<a href="http://blog.csdn.net/kaitiren/article/details/38513715" target="_blank" rel="noopener">这篇文章</a>。</p>
+<h2 id="hexo常见命令"><a href="#hexo常见命令" class="headerlink" title="hexo常见命令"></a>hexo常见命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new page <span class="string">'我的第一篇博客'</span> <span class="comment">#新建页面</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate <span class="comment">#生产静态页面至public目录下，简写：hexo g</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server <span class="comment">#开启预览访问端口，简写：hexo s</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy <span class="comment">#部署到GitHub，简写：hexo d</span></span><br></pre></td></tr></table></figure>
+<h3 id="组合命令"><a href="#组合命令" class="headerlink" title="组合命令"></a>组合命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s -g <span class="comment">#生成静态页面并开启本地预览</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d -g <span class="comment">#生成静态页面并上传github</span></span><br></pre></td></tr></table></figure>
 <h2 id="npm换源"><a href="#npm换源" class="headerlink" title="npm换源"></a>npm换源</h2><p>由于npm的源在国外，所以国内用户使用起来各种不方便。有的时候很可能使用npm下载一些插件出现错误，或者速度很慢，这时就需要使用国内一些优秀的npm镜像来帮助我们。</p>
 <h4 id="淘宝npm镜像"><a href="#淘宝npm镜像" class="headerlink" title="淘宝npm镜像"></a>淘宝npm镜像</h4><ul>
 <li>搜索地址：<code>http://npm.taobao.org/</code></li>
@@ -210,12 +216,6 @@
         <span class="prev-text nav-mobile">Prev</span>
       </a>
     
-    
-      <a class="next" href="/2013/12/02/dagger2学习记录/">
-        <span class="next-text nav-default">postName</span>
-        <span class="prev-text nav-mobile">Next</span>
-        <i class="iconfont icon-right"></i>
-      </a>
     
   </nav>
 

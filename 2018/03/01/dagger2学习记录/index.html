@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="记录dagger2的知识点"/>
+
+
+
+
+  <meta name="keywords" content="android,框架," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Hexo">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2018/03/01/dagger2学习记录/"/>
+
+
+<meta name="description" content="记录dagger2的知识点">
+<meta name="keywords" content="android,框架">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dagger2的学习记录(入门)">
+<meta property="og:url" content="http://yoursite.com/2018/03/01/dagger2学习记录/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="记录dagger2的知识点">
+<meta property="og:image" content="http://yoursite.com/2018/03/01/dagger2学习记录/dagger2基本图.png">
+<meta property="og:updated_time" content="2018-03-02T06:43:30.128Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="dagger2的学习记录(入门)">
+<meta name="twitter:description" content="记录dagger2的知识点">
+<meta name="twitter:image" content="http://yoursite.com/2018/03/01/dagger2学习记录/dagger2基本图.png">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> dagger2的学习记录(入门) - Hexo </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Hexo</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          dagger2的学习记录(入门)
+        
+      </h1>
+
+      <time class="post-time">
+          Mar 01 2018
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>记录学习dagger2的一些知识点，便于以后回顾和复习</p>
+<h3 id="dagger2的好处"><a href="#dagger2的好处" class="headerlink" title="dagger2的好处"></a>dagger2的好处</h3><blockquote>
+<p>1.可以很方便的构建和修改对象的构造函数，只需要维护好<code>Component</code>和<code>modlue</code></p>
+<p>2.可以非常方便的进行单元测试</p>
+</blockquote>
+<h3 id="dagger2-入门"><a href="#dagger2-入门" class="headerlink" title="dagger2 入门"></a><code>dagger2</code> 入门</h3><p>看过很多关于dagger2的文章，好多文章一开始就介绍名词，直接没有看下去的信心，本篇我就带着大家通过一些简单的例子学会 <code>dagger2</code> 的使用</p>
+<h4 id="1-引入dagger2依赖"><a href="#1-引入dagger2依赖" class="headerlink" title="1.引入dagger2依赖"></a>1.引入dagger2依赖</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">在app的build.gradle中添加如下代码：</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">	...</span><br><span class="line">	// apt command comes from the android-apt plugin</span><br><span class="line">	annotationProcessor &apos;com.google.dagger:dagger-compiler:2.12&apos;</span><br><span class="line">	compile &apos;com.google.dagger:dagger:2.12&apos;</span><br><span class="line">	provided &apos;javax.annotation:jsr250-api:1.0&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-学习-Inject-和-Component-的使用"><a href="#2-学习-Inject-和-Component-的使用" class="headerlink" title="2. 学习 @Inject 和 @Component 的使用"></a>2. 学习 <code>@Inject</code> 和 <code>@Component</code> 的使用</h4><p>举个栗子：小明有一个笔可以用来写字。</p>
+<p>分析：小明是一个对象(Person),笔是一个对象(Pen),写字是笔的动作(write)。接着我们来用代码实现，并且使用 <code>dagger2</code> 进行之间的关联，如下：</p>
+<blockquote>
+<p>1.创建 <code>Pen</code> 类</p>
+<p>在 <code>Pen</code> 中，我们使用 <code>@Inject</code> 来标注构造方法</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class Pen &#123;</span><br><span class="line"></span><br><span class="line">    @Inject</span><br><span class="line">    public Pen() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void write() &#123;</span><br><span class="line">        Log.d(&quot;Pen&quot;, &quot;开始写字了&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2.创建 <code>Person</code> 类</p>
+<p>在 <code>Person</code> 中，我们使用 <code>@Inject</code> 来标注需要获取对象的属性名，<code>DaggerPersonComponent</code> 当前还不存在，暂时可以忽略掉</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class Person &#123;</span><br><span class="line"></span><br><span class="line">    @Inject</span><br><span class="line">    public Pen pen;</span><br><span class="line"></span><br><span class="line">    public Person() &#123;</span><br><span class="line">        DaggerPersonComponent.builder()</span><br><span class="line">                .build()</span><br><span class="line">                .inject(this);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p> 新建 <code>PersonComponent</code> 接口</p>
+<p>在 <code>PersonComponent</code> 中，我们使用 <code>@Component</code> 来标注类名，<code>void inject(...)</code> 表示将注入到 <code>Person</code> 对象中 </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Component</span><br><span class="line">public interface PersonComponent &#123;</span><br><span class="line">    void inject(Person p);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>最后，进行编译 (执行<code>Build -&gt; Make Build</code>) ，这时，Person中的 <code>DaggerPersonComponent</code> 就可以找到了</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">进行单元测试：</span><br><span class="line"></span><br><span class="line">@Test</span><br><span class="line">public void testPersonWrite() throws Exception &#123;</span><br><span class="line">    Person person = new Person();</span><br><span class="line">    person.pen.write();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 结果打印如下</span><br><span class="line">	... Pen: 开始写字了</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>结论：</p>
+<p>1.<code>@Inject</code> : 通过 <code>@Inject</code> 标记的构造函数会自动加入到一个容器中，当用 <code>@Inject</code> 标记需要依赖的变量时，<code>Dagger2</code> 会在这个容器中找到这个变量相关的构造函数，并把相关实例构造出来</p>
+<p>2.<code>@Component</code> : 通过 <code>@Component</code> 标注的接口，这个接口相当于中间人，中间人会提供给目标对象中有 <code>@Inject</code> 标注的变量注入相对应的值。在编译后，目标对象需要根据中间人接口生成的实现类 <code>DaggerxxxComponet</code> 进行调用 <code>inject(this)</code> 真正完成注入。</p>
+</blockquote>
+<h4 id="3-学习-Module-和-Provides-的使用"><a href="#3-学习-Module-和-Provides-的使用" class="headerlink" title="3. 学习 @Module 和 @Provides 的使用"></a>3. 学习 <code>@Module</code> 和 <code>@Provides</code> 的使用</h4><p>还是这个栗子：小明有一个笔可以用来写字</p>
+<p>分析：小明是一个对象(Person),笔是一个对象(Pen),写字是笔的动作(write)。但是现在我们构造笔(Pen)这个对象时，我们需要传入一个参数，接着我们来用代码实现，并且使用 <code>dagger2</code> 进行之间的关联，代码如下：</p>
+<blockquote>
+<p>1.创建 <code>Pen</code> 类，就是一个普通对象</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Pen &#123;</span><br><span class="line"></span><br><span class="line">    private String name;</span><br><span class="line"></span><br><span class="line">    public Pen(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void write() &#123;</span><br><span class="line">        Log.d(&quot;Pen&quot;, name + &quot;开始写字了&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2.创建 <code>PersonModule</code> 类，用 <code>@Module</code> 标注类名，用 <code>@Provides</code> 标注方法名</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@Module</span><br><span class="line">public class PersonModule &#123;</span><br><span class="line"></span><br><span class="line">    public PersonModule() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Provides</span><br><span class="line">    public Pen providePen() &#123;</span><br><span class="line">        return new Pen(&quot;铅笔&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>3.创建 <code>PersonComponent</code> 接口，用 <code>@Component(modules = PersonModule.class)</code> 标注接口名</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Component(modules = PersonModule.class)</span><br><span class="line">public interface PersonComponent &#123;</span><br><span class="line">    void inject(Person p);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>4.创建 <code>Person</code> 类，和之前创建的一样</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Person &#123;</span><br><span class="line"></span><br><span class="line">    @Inject</span><br><span class="line">    public Pen pen;</span><br><span class="line"></span><br><span class="line">    public Person() &#123;</span><br><span class="line">        DaggerPersonComponent.builder()</span><br><span class="line">                .personModule(new PersonModule())</span><br><span class="line">                .build()</span><br><span class="line">                .inject(this);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>5.进行测试</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void testPersonWrite() throws Exception &#123;</span><br><span class="line">    Person person = new Person();</span><br><span class="line">    person.pen.write();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 结果打印如下</span><br><span class="line">	... Pen: 铅笔开始写字了</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>结论：</p>
+<p>1.<code>@Module</code> : <code>@Module</code> 用于标注提供依赖的类，当我们使用第三方类提供的方法时又不想改动第三方类时，<code>@Module</code> 就完美解决了这个问题</p>
+<p>2.<code>@Provides</code> : <code>@Provides</code> 用于标注Module所标注类中的方法，该方法在需要提供依赖时调用，从而把提供好的对象当做依赖给标注了<code>@Inject</code>的变量赋值</p>
+</blockquote>
+<h4 id="3-学习-Qualifier-的使用"><a href="#3-学习-Qualifier-的使用" class="headerlink" title="3. 学习 @Qualifier 的使用"></a>3. 学习 <code>@Qualifier</code> 的使用</h4><p>还是这个栗子：小明有一个笔可以用来写字</p>
+<p>分析：小明是一个对象(Person),笔是一个对象(Pen),写字是笔的动作(write)。但是现在在Person中需要铅笔和钢笔，接着我们来用代码实现，并且使用 <code>dagger2</code> 进行之间的关联，代码如下</p>
+<blockquote>
+<p>1.创建 <code>Pen</code> 类，就是一个普通对象</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Pen &#123;</span><br><span class="line"></span><br><span class="line">    private String name;</span><br><span class="line"></span><br><span class="line">    public Pen(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void write() &#123;</span><br><span class="line">        Log.d(&quot;Pen&quot;, name + &quot;开始写字了&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2.创建 <code>PencilQualifier</code> 和 <code>FountainPenQualifier</code>，用来标注铅笔和钢笔</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Qualifier</span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">public @interface PencilQualifier &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Qualifier</span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">public @interface FountainPenQualifier &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>3.创建 <code>PersonModule</code>类， <code>@PencilQualifier</code>和 <code>@FountainPenQualifier</code>，用来标注提供铅笔对象的方法和提供钢笔对象的方法</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">@Module</span><br><span class="line">public class PersonModule &#123;</span><br><span class="line"></span><br><span class="line">    public PersonModule() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    @PencilQualifier</span><br><span class="line">    @Provides</span><br><span class="line">    public Pen providePencilPen() &#123;</span><br><span class="line">        return new Pen(&quot;铅笔&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @FountainPenQualifier</span><br><span class="line">    @Provides</span><br><span class="line">    public Pen provideFountainPen() &#123;</span><br><span class="line">        return new Pen(&quot;钢笔&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>4.创建 <code>PersonComponent</code>接口</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Component(modules = PersonModule.class)</span><br><span class="line">public interface PersonComponent &#123;</span><br><span class="line">    void inject(Person p);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>5.创建 <code>Person</code>类</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public class Person &#123;</span><br><span class="line"></span><br><span class="line">    // 铅笔</span><br><span class="line">    @PencilQualifier</span><br><span class="line">    @Inject</span><br><span class="line">    public Pen pencil;</span><br><span class="line"></span><br><span class="line">    // 钢笔</span><br><span class="line">    @FountainPenQualifier</span><br><span class="line">    @Inject</span><br><span class="line">    public Pen fountainPen;</span><br><span class="line"></span><br><span class="line">    public Person() &#123;</span><br><span class="line">        DaggerPersonComponent.builder()</span><br><span class="line">                .personModule(new PersonModule())</span><br><span class="line">                .build()</span><br><span class="line">                .inject(this);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>6.单元测试</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void testPersonWrite() throws Exception &#123;</span><br><span class="line">    Person person = new Person();</span><br><span class="line">    person.pencil.write();</span><br><span class="line">    person.fountainPen.write();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 结果打印如下</span><br><span class="line">	... Pen: 铅笔开始写字了</span><br><span class="line">	... Pen: 钢笔开始写字了</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>结论：当我们在<code>@Module</code>标注的类中需要提供多种返回对象相同的方法时，需要使用 <code>@Qulifier</code> 自定义注解加以区分</p>
+</blockquote>
+<h4 id="3-学习-Scope-的使用"><a href="#3-学习-Scope-的使用" class="headerlink" title="3. 学习 @Scope 的使用"></a>3. 学习 <code>@Scope</code> 的使用</h4><p>还是这个栗子：小明有一个笔可以用来写字</p>
+<p>分析：小明是一个对象(Person),笔是一个对象(Pen),写字是笔的动作(write)。我们在Person对象中如何保证Pen只创建一次呢，直接看代码：</p>
+<blockquote>
+<p>1.创建 <code>Pen</code> 类，就是一个普通对象</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class Pen &#123;</span><br><span class="line"></span><br><span class="line">    private String name;</span><br><span class="line"></span><br><span class="line">    public Pen(String name) &#123;</span><br><span class="line">        Log.d(&quot;Pen&quot;, name + &quot; Create&quot;);</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void write() &#123;</span><br><span class="line">        Log.d(&quot;Pen&quot;, name + &quot;开始写字了&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2.创建 <code>PersonScope</code> 注解</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Scope</span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">public @interface PersonScope &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>3.创建 <code>PersonModule</code> 类，<code>@PersonScope</code>标注方法名</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@Module</span><br><span class="line">public class PersonModule &#123;</span><br><span class="line"></span><br><span class="line">    public PersonModule() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    @PersonScope</span><br><span class="line">    @Provides</span><br><span class="line">    public Pen providePencilPen() &#123;</span><br><span class="line">        return new Pen(&quot;铅笔&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>4.创建 <code>PersonComponent</code> 类，<code>@PersonScope</code>标注类名</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@PersonScope</span><br><span class="line">@Component(modules = PersonModule.class)</span><br><span class="line">public interface PersonComponent &#123;</span><br><span class="line">    void inject(Person p);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>5.创建 <code>Person</code> 类</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class Person &#123;</span><br><span class="line"></span><br><span class="line">    @Inject</span><br><span class="line">    public Pen pencil;</span><br><span class="line"></span><br><span class="line">    @Inject</span><br><span class="line">    public Pen pencil2;</span><br><span class="line"></span><br><span class="line">    public Person() &#123;</span><br><span class="line">        DaggerPersonComponent.builder()</span><br><span class="line">                .personModule(new PersonModule())</span><br><span class="line">                .build()</span><br><span class="line">                .inject(this);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>6.进行单元测试</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void testPersonWrite() throws Exception &#123;</span><br><span class="line">    Person person = new Person();</span><br><span class="line">    person.pencil.write();</span><br><span class="line">    person.pencil2.write();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 结果打印如下</span><br><span class="line">	... Pen: 铅笔 Create</span><br><span class="line">	... Pen: 铅笔开始写字了</span><br><span class="line">	... Pen: 铅笔开始写字了</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>结论： <code>@Scope</code> 限定作用域，实现局部单例的</p>
+</blockquote>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>现在我们回顾下<code>dagger2</code>关键部分</p>
+<p><img src="/2018/03/01/dagger2学习记录/dagger2基本图.png" alt="dagger2"></p>
+<p>1.<code>@Inject</code> 用于标注构造函数，和成员属性，标注的成员属性不能是<code>private</code>修饰</p>
+<p>2.<code>@Module</code> 标注类名，通常和<code>@Provides</code>配合使用，<code>@Provides</code> 用于标注方法，和<code>@Inject</code>标注构造函数作用一样，但优先级别要比<code>@Inject</code>要高</p>
+<p>3.<code>@Component</code>用于标注接口或抽象类，为目标对象注入需要的对象</p>
+<p>4.<code>@Qualifier</code>用于自定义注解，当目标对象中需要获取注入对象的多个实例时，分别定义多个自定义注解加以区分</p>
+<p>5.<code>@Scope</code>用于自定义注解，目标对象中如果重复引用目标对象，使用<code>@Scope</code>定义自定义注解可以保证注入对象不会被重复创建</p>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/android/">android</a>
+		  
+			<a href="/tags/框架/">框架</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2018/02/28/hello-world/">
+        <span class="next-text nav-default">Hello World</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2018
+    <span class="footer-author">John Doe.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
