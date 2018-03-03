@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="记录dagger2的知识点"/>
+
+
+
+
+  <meta name="keywords" content="android,框架," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Hexo">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2018/03/02/dagger2学习记录-进阶/"/>
+
+
+<meta name="description" content="记录dagger2的知识点">
+<meta name="keywords" content="android,框架">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dagger2的学习记录(进阶)">
+<meta property="og:url" content="http://yoursite.com/2018/03/02/dagger2学习记录-进阶/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="记录dagger2的知识点">
+<meta property="og:updated_time" content="2018-03-03T14:28:09.869Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="dagger2的学习记录(进阶)">
+<meta name="twitter:description" content="记录dagger2的知识点">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> dagger2的学习记录(进阶) - Hexo </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Hexo</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          dagger2的学习记录(进阶)
+        
+      </h1>
+
+      <time class="post-time">
+          Mar 02 2018
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>记录学习dagger2的一些知识点，便于以后回顾和复习</p>
+<h3 id="dagger2-进阶"><a href="#dagger2-进阶" class="headerlink" title="dagger2 进阶"></a><code>dagger2</code> 进阶</h3><p>在上一篇文章，我们学习了<code>dagger2</code>的基本使用，相信你已经对<code>dagger2</code>有了自己的认识，本篇文章我们就来完善和学习下<code>dagger2`</code>其他的知识点。</p>
+<h4 id="1-Lazy-延迟注入"><a href="#1-Lazy-延迟注入" class="headerlink" title="1.Lazy(延迟注入)"></a>1.Lazy(延迟注入)</h4><blockquote>
+<p>为了加快类的加载速度，我们想在使用这个对象时再去加载它，这时<code>Lazy&lt;T&gt;</code>就派上用场了</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class Person &#123;</span><br><span class="line"></span><br><span class="line">    @Inject</span><br><span class="line">    public Lazy&lt;Pen&gt; pencil;</span><br><span class="line">    </span><br><span class="line">    public void write() &#123;</span><br><span class="line">        pencil.get().write();// pencil.get() 返回 Pen 实例</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-Provider-注入"><a href="#2-Provider-注入" class="headerlink" title="2.Provider 注入"></a>2.Provider 注入</h4><blockquote>
+<p>当我们需要多个实例时，可以使用<code>Provider&lt;T&gt;</code>，每次调用<code>get()</code>方法都会重新创建实例</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Person &#123;</span><br><span class="line"></span><br><span class="line">    @Inject</span><br><span class="line">    public Provider&lt;Pen&gt; penProvider;</span><br><span class="line">	</span><br><span class="line">	private Pen pen, pen2;</span><br><span class="line">    </span><br><span class="line">    public void createPen() &#123;</span><br><span class="line">        pen = penProvider.get();</span><br><span class="line">		pen2 = penProvider.get();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-Singleton-Scope"><a href="#3-Singleton-Scope" class="headerlink" title="3.Singleton Scope"></a>3.Singleton Scope</h4><blockquote>
+<p>Scope 作用域的本质是 Component 会持有与之绑定的依赖实例的引用，要想确保实例的生命周期，关键在于控制 Component 的生命周期。</p>
+</blockquote>
+<blockquote>
+<p>在上一篇文章中，我们自定义过<code>@Scope</code>注解，其实和<code>@Singleton</code>一样，<code>@Singleton</code>的含义是保证单例，但是如果我们产生了多个Component就无法保证单例了。</p>
+<p>如何保证单例呢？我们可以在<code>AppComponent</code>使用Singleton作用域，保证绑定的依赖实例的单例。它生效的原因是<code>AppComponent</code>只会在<code>Application</code>中创建一次，由<code>AppComponent</code>的单例来保证绑定的依赖实例的单例。</p>
+</blockquote>
+<h4 id="4-Binding-Instances"><a href="#4-Binding-Instances" class="headerlink" title="4.Binding Instances"></a>4.Binding Instances</h4><blockquote>
+<p><code>Component</code> 可以间接持有<code>Module</code> 或 <code>Inject</code> 目标类构造函数提供的依赖实例，除了这两种方式，<code>Component</code> 还可以在创建 <code>Component</code>的时候绑定依赖实例，用以注入。这就是<code>@BindsInstance</code>注解的作用，只能在 <code>Component.Builder</code> 中使用。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">没有使用`@BindsInstance`之前</span><br><span class="line"></span><br><span class="line">@Module</span><br><span class="line">public final class HomeActivityModule &#123;</span><br><span class="line">    private final HomeActivity activity;</span><br><span class="line">    public HomeActivityModule(HomeActivity activity) &#123;</span><br><span class="line">        this.activity = activity;</span><br><span class="line">    &#125;</span><br><span class="line">    @Provides</span><br><span class="line">    @ActivityScope  // 自定义作用域</span><br><span class="line">    Activity provideActivity() &#123;</span><br><span class="line">        return activity;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">@ActivityScope</span><br><span class="line">@Component(modules = HomeActivityModule.class)</span><br><span class="line">public interface HomeActivityComponent &#123;</span><br><span class="line">   </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">使用`BindsInstance`后，上面的`Module`就可以省略了</span><br><span class="line">@ActivityScope</span><br><span class="line">@Component</span><br><span class="line">public interface HomeActivityComponent &#123;</span><br><span class="line">    @Component.Builder</span><br><span class="line">    interface Builder &#123;</span><br><span class="line">        @BindsInstance</span><br><span class="line">        Builder activity(Activity activity);</span><br><span class="line">        HomeActivityComponent build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>优先使用<code>@BindsInstance</code>方法，相对于写一个带有构造函数带有参数的 <code>Module</code>。</p>
+</blockquote>
+<h4 id="5-Component-依赖关系"><a href="#5-Component-依赖关系" class="headerlink" title="5.Component 依赖关系"></a>5.<code>Component</code> 依赖关系</h4><blockquote>
+<p>举个栗子：我的车我的朋友也可以开</p>
+<p>分析：<code>FriendComponet</code>依赖于我的<code>MeComponent</code>，还是代码比较直观点，直接看代码：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public class Car &#123;</span><br><span class="line"></span><br><span class="line">    public Car() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void drive() &#123;</span><br><span class="line">        Log.e(&quot;Car&quot;, &quot;汽车开始行驶了...&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Module</span><br><span class="line">public class MeModule &#123;</span><br><span class="line"></span><br><span class="line">    public MeModule() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Provides</span><br><span class="line">    public Car provideCar() &#123;</span><br><span class="line">        return new Car();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@Component(modules = &#123;MeModule.class&#125;)</span><br><span class="line">public interface MeComponent &#123;</span><br><span class="line">    void inject(Me me);</span><br><span class="line"></span><br><span class="line">    Car getCar();// 需要对外开放，朋友才能驾驶</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// FriendComponent 依赖于 MeComponent</span><br><span class="line">@Component(dependencies = MeComponent.class)</span><br><span class="line">public interface FriendComponent &#123;</span><br><span class="line">    void inject(Friend friend);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 这样，朋友可以成功的驾驶我的汽车了</span><br><span class="line">public class Friend &#123;</span><br><span class="line"></span><br><span class="line">    @Inject</span><br><span class="line">    public Car car;</span><br><span class="line"></span><br><span class="line">    public Friend() &#123;</span><br><span class="line">        MeComponent meComponent = DaggerMeComponent.builder().build();</span><br><span class="line">        DaggerFriendComponent.builder()</span><br><span class="line">                .meComponent(meComponent)</span><br><span class="line">                .build()</span><br><span class="line">                .inject(this);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void drive() &#123;</span><br><span class="line">        car.drive();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 进行单元测试</span><br><span class="line">@Test</span><br><span class="line">public void testFriendCar() throws Exception &#123;</span><br><span class="line">	Friend friend = new Friend();</span><br><span class="line">	friend.drive();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 结果打印如下</span><br><span class="line">	... Car: 汽车开始行驶了...</span><br></pre></td></tr></table></figure>
+<h4 id="5-Component-继承关系"><a href="#5-Component-继承关系" class="headerlink" title="5.Component 继承关系"></a>5.<code>Component</code> 继承关系</h4><blockquote>
+<p>举个栗子：儿子继承父亲的财产</p>
+<p><code>SubComponent</code>称之为子<code>Component</code>，还是从代码中学习继承关系比较直观点</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">public class Money &#123;</span><br><span class="line"></span><br><span class="line">    public Money() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void getMoney() &#123;</span><br><span class="line">        Log.d(&quot;Money&quot;, &quot;恭喜您！您将拥有1000万美金&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 1.FatherModule需要指定`subcomponents`</span><br><span class="line">@Module(subcomponents = SonComponent.class)</span><br><span class="line">public class FatherModule &#123;</span><br><span class="line"></span><br><span class="line">    public FatherModule() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Provides</span><br><span class="line">    public Money provideMoney() &#123;</span><br><span class="line">        return new Money();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 2.`SonComponent`使用`@Subcomponent`进行标注</span><br><span class="line">@Subcomponent</span><br><span class="line">public interface SonComponent &#123;</span><br><span class="line"></span><br><span class="line">    void inject(Son son);</span><br><span class="line"></span><br><span class="line">    @Subcomponent.Builder</span><br><span class="line">    interface Builder &#123;</span><br><span class="line">        SonComponent build(); // 3. SubComponent 必须显式地声明 Subcomponent.Builder</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// `FatherComponent`需要指定创建`SonComponent.Builder`的方法</span><br><span class="line">@Component(modules = FatherModule.class)</span><br><span class="line">public interface FatherComponent &#123;</span><br><span class="line"></span><br><span class="line">    void inject(Father father);</span><br><span class="line"></span><br><span class="line">    SonComponent.Builder sonComponent();// 4. 用来创建 `Subcomponent`</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Son &#123;</span><br><span class="line"></span><br><span class="line">    @Inject</span><br><span class="line">    Money money;</span><br><span class="line"></span><br><span class="line">    public Son() &#123;</span><br><span class="line">        FatherComponent fatherComponent = DaggerFatherComponent.builder().build();</span><br><span class="line"></span><br><span class="line">        SonComponent.Builder builder = fatherComponent.sonComponent();</span><br><span class="line"></span><br><span class="line">        builder.build().inject(this);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void showMoney() &#123;</span><br><span class="line">        money.getMoney();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 进行单元测试</span><br><span class="line">@Test</span><br><span class="line">public void testSonMoney() throws Exception &#123;</span><br><span class="line">	Son son = new Son();</span><br><span class="line">	son.showMoney();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 打印结果如下：</span><br><span class="line">	... Money: 恭喜您！您将拥有1000万美金</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>总结(从别的地方抄的)：</p>
+<p>相同点：<br>1.两者都能复用其他 Component 的依赖<br>2.有依赖关系和继承关系的 Component 不能有相同的 Scope</p>
+</blockquote>
+<blockquote>
+<p>不同点：<br>1.依赖关系中被依赖的 Component 必须显式地提供公开依赖实例的接口，而 SubComponent 默认继承 parent Component 的依赖。<br>2.依赖关系会生成两个独立的 DaggerXXComponent 类，而 SubComponent 不会生成 独立的 DaggerXXComponent 类。</p>
+</blockquote>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/android/">android</a>
+		  
+			<a href="/tags/框架/">框架</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2018/03/01/dagger2学习记录/">
+        <span class="next-text nav-default">dagger2的学习记录(入门)</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2018
+    <span class="footer-author">John Doe.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
