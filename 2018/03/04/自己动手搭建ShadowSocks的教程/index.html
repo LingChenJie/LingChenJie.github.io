@@ -69,7 +69,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_25.png">
 <meta property="og:image" content="http://yoursite.com/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_26.png">
 <meta property="og:image" content="http://yoursite.com/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_27.png">
-<meta property="og:updated_time" content="2018-03-04T07:37:46.311Z">
+<meta property="og:updated_time" content="2018-03-04T07:59:14.607Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自己动手搭建ShadowSocks的教程">
 <meta name="twitter:description" content="记录如何搭建ShadowSocks">
@@ -219,10 +219,16 @@
 <p>继续输入“apt-get install wget -y”回车<br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_17.png" alt="ShadowSocks"></p>
 </blockquote>
 <blockquote>
-<p>复制以下全部内容：<br>wget –no-check-certificate -O shadowsocks-all.sh<br><a href="https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh" target="_blank" rel="noopener">https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh</a> &amp;&amp; chmod +x shadowsocks-all.sh &amp;&amp; ./shadowsocks-all.sh 2&gt;&amp;1 | tee shadowsocks-all.log<br>然后粘贴到“xshell”里面，如图：<br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_18.png" alt="ShadowSocks"><br>然后：回车<br>回车后会自动下载脚本，大家按照下图方法操作：<br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_19.png" alt="ShadowSocks"><br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_20.png" alt="ShadowSocks"><br>自动安装中…<br>经过一段时间的等待，安装成功会出现下图信息，记得保存<br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_21.png" alt="ShadowSocks"></p>
+<p>复制以下全部内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh &amp;&amp; chmod +x shadowsocks-all.sh &amp;&amp; ./shadowsocks-all.sh 2&gt;&amp;1 | tee shadowsocks-all.log</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>然后粘贴到“xshell”里面，如图：<br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_18.png" alt="ShadowSocks"><br>然后：回车<br>回车后会自动下载脚本，大家按照下图方法操作：<br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_19.png" alt="ShadowSocks"><br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_20.png" alt="ShadowSocks"><br>自动安装中…<br>经过一段时间的等待，安装成功会出现下图信息，记得保存<br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_21.png" alt="ShadowSocks"></p>
 </blockquote>
 <h4 id="安装锐速，可以加快访问速度"><a href="#安装锐速，可以加快访问速度" class="headerlink" title="安装锐速，可以加快访问速度"></a>安装锐速，可以加快访问速度</h4><blockquote>
-<p>复制下面信息<br>wget –no-check-certificate -qO /tmp/appex.sh “<a href="https://raw.githubusercontent.com/0oVicero0/serverSpeeder_Install/master/appex.sh&quot;" target="_blank" rel="noopener">https://raw.githubusercontent.com/0oVicero0/serverSpeeder_Install/master/appex.sh&quot;</a> &amp;&amp; bash /tmp/appex.sh ‘install’<br>然后粘贴到“xshell” 里面，回车，如下图：<br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_22.png" alt="ShadowSocks"></p>
+<p>复制下面信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate -qO /tmp/appex.sh &quot;https://raw.githubusercontent.com/0oVicero0/serverSpeeder_Install/master/appex.sh&quot; &amp;&amp; bash /tmp/appex.sh &apos;install&apos;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>然后粘贴到“xshell” 里面，回车，如下图：<br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_22.png" alt="ShadowSocks"></p>
 </blockquote>
 <blockquote>
 <p>等待一会，锐速就安装完成<br>然后输入“reboot”重启服务器,大约一分钟后服务器就会重启成功，如下图<br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_23.png" alt="ShadowSocks"></p>
