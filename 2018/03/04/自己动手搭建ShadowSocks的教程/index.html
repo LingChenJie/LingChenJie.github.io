@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="记录如何搭建ShadowSocks"/>
+
+
+
+
+  <meta name="keywords" content="ShadowSocks," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Hexo">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2018/03/04/自己动手搭建ShadowSocks的教程/"/>
+
+
+<meta name="description" content="记录如何搭建ShadowSocks">
+<meta name="keywords" content="ShadowSocks">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自己动手搭建ShadowSocks的教程">
+<meta property="og:url" content="http://yoursite.com/2018/03/04/自己动手搭建ShadowSocks的教程/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="记录如何搭建ShadowSocks">
+<meta property="og:image" content="http://yoursite.com/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_1.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_2.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_3.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_4.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_5.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_6.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_7.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_8.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_9.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_10.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_11.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_12.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_13.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_14.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_15.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_16.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_17.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_18.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_19.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_20.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_21.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_22.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_23.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_24.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_25.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_26.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_27.png">
+<meta property="og:updated_time" content="2018-03-04T07:37:46.311Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="自己动手搭建ShadowSocks的教程">
+<meta name="twitter:description" content="记录如何搭建ShadowSocks">
+<meta name="twitter:image" content="http://yoursite.com/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_1.png">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> 自己动手搭建ShadowSocks的教程 - Hexo </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Hexo</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          自己动手搭建ShadowSocks的教程
+        
+      </h1>
+
+      <time class="post-time">
+          Mar 04 2018
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>记录如何搭建ShadowSocks，便于以后学习和查询资料</p>
+<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><blockquote>
+<p>之前看到很多朋友都在搭建自己的翻墙服务器，一直没有搞明白原理，加上自己之前一直用<code>lantern</code>还不错，但是近几天<code>lantern</code>时好时坏的，就感觉挺麻烦的，就在网上找了找如何自己翻墙服务器的教程，自己动手操作了一下，在此记录一下。</p>
+</blockquote>
+<blockquote>
+<p>翻墙的原理：<br>其实就是你访问网站的数据不从你的电脑中直接去请求，而是通过你的代理服务器去请求你所访问网站的数据，你的电脑和你的代理服务器之间传输的数据经过了加密传输，这样就绕过了墙的的拦截。代理服务器位置必须是在国外或没有被墙的位置，不然也会被墙。</p>
+</blockquote>
+<h4 id="1-服务器的选择"><a href="#1-服务器的选择" class="headerlink" title="1.服务器的选择"></a>1.服务器的选择</h4><blockquote>
+<p>在云服务大火的今天，国内互联网巨头公司的云服务也是做得风生水起。比如：<a href="https://www.alibabacloud.com?_blank" target="_blank" rel="noopener">阿里云</a>、<a href="https://cloud.tencent.com/" target="_blank" rel="noopener">腾讯云</a> 都有国外的服务器。国外的云服务有<a href="https://www.vultr.com/" target="_blank" rel="noopener">Vultr</a>、<a href="https://bandwagonhost.com/" target="_blank" rel="noopener">搬瓦工(Bandwagonhost)</a>等。这几种云服务都不错，大家可以随意选择，我使用的搬瓦工，接下来介绍下如何购买搬瓦工云服务：</p>
+</blockquote>
+<blockquote>
+<p>进入主页后，我们可以看到如下图的内容<br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_1.png" alt="ShadowSocks"></p>
+</blockquote>
+<blockquote>
+<p>随意选择一个，点击<code>Order KVM or OpenVZ</code>，进入<br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_2.png" alt="ShadowSocks"></p>
+</blockquote>
+<blockquote>
+<p>这时你可以根据自己的经济情况选择一个即可，选择好后，将会进入<br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_3.png" alt="ShadowSocks"></p>
+</blockquote>
+<blockquote>
+<p>点击结算<br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_4.png" alt="ShadowSocks"></p>
+</blockquote>
+<blockquote>
+<p>如何没有注册的话，本页面需要输入个人信息<br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_5.png" alt="ShadowSocks"></p>
+</blockquote>
+<blockquote>
+<p>完成信息填写后，选择支付方式，点击<code>Complete Order</code>进入下一步完成支付即可<br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_6.png" alt="ShadowSocks"></p>
+</blockquote>
+<blockquote>
+<p>付款成功后，我们就可以使用了</p>
+</blockquote>
+<h4 id="2-搬瓦工控制面板的使用"><a href="#2-搬瓦工控制面板的使用" class="headerlink" title="2.搬瓦工控制面板的使用"></a>2.搬瓦工控制面板的使用</h4><blockquote>
+<p>购买完成后，我们就可以进入到搬瓦工的控制面板了，进入主页，选择<code>Service</code> —&gt; <code>My Service`</code>进入<br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_7.png" alt="ShadowSocks"></p>
+</blockquote>
+<blockquote>
+<p>然后找到刚才购买的VPS后面有个“KiwiVM Control Panel”点击后就进入了后台控制面板<br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_8.png" alt="ShadowSocks"></p>
+</blockquote>
+<blockquote>
+<p>进入控制面板后，我们先停止当前的运行<br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_9.png" alt="ShadowSocks"></p>
+</blockquote>
+<blockquote>
+<p>重新安装操作系统，如下图所示：<br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_10.png" alt="ShadowSocks"></p>
+</blockquote>
+<blockquote>
+<p>安装完成之后如下，记住密码和端口号，下面需要使用到<br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_11.png" alt="ShadowSocks"></p>
+</blockquote>
+<h4 id="3-通过远程工具Xshell5搭建ShadowSocks"><a href="#3-通过远程工具Xshell5搭建ShadowSocks" class="headerlink" title="3.通过远程工具Xshell5搭建ShadowSocks"></a>3.通过远程工具<code>Xshell5</code>搭建<code>ShadowSocks</code></h4><blockquote>
+<p><a href="http://sw.bos.baidu.com/sw-search-sp/software/30b61b092de57/Xshell_5.0.1325.exe" target="_blank" rel="noopener">点击下载Xshell5</a> ，下载后进行安装，安装后打开，新建，如下图：<br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_12.png" alt="ShadowSocks"></p>
+</blockquote>
+<blockquote>
+<p>然后会弹出对话框，选择用户身份验证，ip和端口号可以在控制面板的<code>Main controls</code>中查看<br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_13.png" alt="ShadowSocks"></p>
+</blockquote>
+<blockquote>
+<p>点击确定之后，稍等下会有弹出框，输入用户名’root’，点击确定之后，稍等下又会弹出输入密码，输入之前我们在控制面板中获取的那个那个密码即可<br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_14.png" alt="ShadowSocks"><br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_15.png" alt="ShadowSocks"></p>
+</blockquote>
+<blockquote>
+<p>这个时候已经连接成功了，我们输入“apt-get update”回车，如图：<br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_16.png" alt="ShadowSocks"></p>
+</blockquote>
+<blockquote>
+<p>继续输入“apt-get install wget -y”回车<br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_17.png" alt="ShadowSocks"></p>
+</blockquote>
+<blockquote>
+<p>复制以下全部内容：<br>wget –no-check-certificate -O shadowsocks-all.sh<br><a href="https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh" target="_blank" rel="noopener">https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh</a> &amp;&amp; chmod +x shadowsocks-all.sh &amp;&amp; ./shadowsocks-all.sh 2&gt;&amp;1 | tee shadowsocks-all.log<br>然后粘贴到“xshell”里面，如图：<br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_18.png" alt="ShadowSocks"><br>然后：回车<br>回车后会自动下载脚本，大家按照下图方法操作：<br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_19.png" alt="ShadowSocks"><br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_20.png" alt="ShadowSocks"><br>自动安装中…<br>经过一段时间的等待，安装成功会出现下图信息，记得保存<br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_21.png" alt="ShadowSocks"></p>
+</blockquote>
+<h4 id="安装锐速，可以加快访问速度"><a href="#安装锐速，可以加快访问速度" class="headerlink" title="安装锐速，可以加快访问速度"></a>安装锐速，可以加快访问速度</h4><blockquote>
+<p>复制下面信息<br>wget –no-check-certificate -qO /tmp/appex.sh “<a href="https://raw.githubusercontent.com/0oVicero0/serverSpeeder_Install/master/appex.sh&quot;" target="_blank" rel="noopener">https://raw.githubusercontent.com/0oVicero0/serverSpeeder_Install/master/appex.sh&quot;</a> &amp;&amp; bash /tmp/appex.sh ‘install’<br>然后粘贴到“xshell” 里面，回车，如下图：<br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_22.png" alt="ShadowSocks"></p>
+</blockquote>
+<blockquote>
+<p>等待一会，锐速就安装完成<br>然后输入“reboot”重启服务器,大约一分钟后服务器就会重启成功，如下图<br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_23.png" alt="ShadowSocks"></p>
+</blockquote>
+<h4 id="安装Shadowsocks客户端"><a href="#安装Shadowsocks客户端" class="headerlink" title="安装Shadowsocks客户端"></a>安装Shadowsocks客户端</h4><blockquote>
+<p><a href="https://github.com/shadowsocks" target="_blank" rel="noopener">github地址</a> ，进入<code>github</code>选择你的系统的Shadowsocks，比如<a href="https://github.com/shadowsocks/shadowsocks-windows" target="_blank" rel="noopener">shadowsocks-windows</a>，点击进入，如下图操作：<br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_24.png" alt="ShadowSocks"><br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_25.png" alt="ShadowSocks"></p>
+</blockquote>
+<blockquote>
+<p>解压后打开，如下图进行配置：<br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_26.png" alt="ShadowSocks"></p>
+</blockquote>
+<blockquote>
+<p>配置完成之后，你就可以科学上网了，找学习资料更好的学习了<br><img src="/2018/03/04/自己动手搭建ShadowSocks的教程/Bandwagonhost_27.png" alt="ShadowSocks"></p>
+</blockquote>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/ShadowSocks/">ShadowSocks</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2018/03/03/dagger2学习记录-应用/">
+        <span class="next-text nav-default">dagger2的学习记录(应用)</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2018
+    <span class="footer-author">John Doe.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
