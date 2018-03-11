@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="记录Retrofit结合RxJava的使用"/>
+
+
+
+
+  <meta name="keywords" content="android,框架,Retrofit,RxJava," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Hexo">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2018/03/10/Retrofit配合RxJava使用/"/>
+
+
+<meta name="description" content="记录Retrofit结合RxJava的使用">
+<meta name="keywords" content="android,框架,Retrofit,RxJava">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Retrofit配合RxJava使用">
+<meta property="og:url" content="http://yoursite.com/2018/03/10/Retrofit配合RxJava使用/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="记录Retrofit结合RxJava的使用">
+<meta property="og:updated_time" content="2018-03-11T06:49:55.044Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Retrofit配合RxJava使用">
+<meta name="twitter:description" content="记录Retrofit结合RxJava的使用">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> Retrofit配合RxJava使用 - Hexo </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Hexo</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Retrofit配合RxJava使用
+        
+      </h1>
+
+      <time class="post-time">
+          Mar 10 2018
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>本文记录下Retrofit和RxJava的配合使用，毕竟二者配合是android中网络请求的最佳使用。</p>
+<h4 id="1-导入依赖"><a href="#1-导入依赖" class="headerlink" title="1.导入依赖"></a>1.导入依赖</h4><blockquote>
+<p>在app.build中添加以下依赖<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    ...</span><br><span class="line">	</span><br><span class="line">	// Retrofit</span><br><span class="line">	compile &apos;com.squareup.retrofit2:adapter-rxjava:2.1.0&apos;</span><br><span class="line">	compile &apos;com.squareup.retrofit2:retrofit:2.1.0&apos;</span><br><span class="line">	compile &apos;com.squareup.retrofit2:converter-gson:2.1.0&apos;</span><br><span class="line">	compile &apos;com.squareup.okhttp3:logging-interceptor:3.6.0&apos;</span><br><span class="line">	// 与rxjava配合使用需导入以下的库</span><br><span class="line">	compile &apos;io.reactivex:rxjava:1.1.0&apos;</span><br><span class="line">    compile &apos;io.reactivex:rxandroid:1.1.0&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="2-如何使用"><a href="#2-如何使用" class="headerlink" title="2.如何使用"></a>2.如何使用</h4><blockquote>
+<p>通过以下代码，就可以很清晰的了解到两者是如何配合使用的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">// 1.定义网络请求接口，其中方法的返回是Observable</span><br><span class="line">public interface AppService &#123;</span><br><span class="line">    @GET(&quot;book/&#123;id&#125;&quot;)</span><br><span class="line">    Observable&lt;Book&gt; getBook(@Path(&quot;id&quot;) int id);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 2.创建Retrofit对象</span><br><span class="line">Retrofit retrofit = new Retrofit.Builder()</span><br><span class="line">		.baseUrl(BaseUrl)</span><br><span class="line">		.addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">		.addCallAdapterFactory(RxJavaCallAdapterFactory.create())</span><br><span class="line">		.build();</span><br><span class="line">			</span><br><span class="line">// 3.获取接口，调用方法进行网络请求</span><br><span class="line">AppService appService = retrofit.create(AppService.class);</span><br><span class="line">appService.getBook(10)</span><br><span class="line">		.subscribeOn(Schedulers.io())</span><br><span class="line">		.observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">		.subscribe(new Subscriber&lt;Book&gt;() &#123;</span><br><span class="line">			@Override</span><br><span class="line">			public void onCompleted() &#123;</span><br><span class="line">				...</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			@Override</span><br><span class="line">			public void onError(Throwable e) &#123;</span><br><span class="line">				...</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			@Override</span><br><span class="line">			public void onNext(Book book) &#123;</span><br><span class="line">				...</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>两者的配合是不是非常完美呢，我们可以非常清楚的了解代码的业务逻辑，而且没有了线程之间的反复的切换</p>
+</blockquote>
+<h4 id="3-简单的封装下网络请求"><a href="#3-简单的封装下网络请求" class="headerlink" title="3.简单的封装下网络请求"></a>3.简单的封装下网络请求</h4><blockquote>
+<p>基本上我们每一个应用都需要离不开网络请求，倘若每次调用网络都要写一大推代码，就会显得有些凌乱了，所以简单的封装下还是很有必要的，下面直接看代码</p>
+</blockquote>
+<blockquote>
+<p>1.创建自己的网络请求对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">public class HttpClient &#123;</span><br><span class="line"></span><br><span class="line">    public static final String BASE_URL = &quot;&quot;;// 网络请求地址</span><br><span class="line"></span><br><span class="line">    private Retrofit retrofit;</span><br><span class="line">    private AppService appService;</span><br><span class="line"></span><br><span class="line">    private HttpMethods() &#123;</span><br><span class="line">        // 创建okHttp，自己定义超时时间</span><br><span class="line">        OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder();</span><br><span class="line">		httpClientBuilder.writeTimeOut(10, TimeUnit.SECONDS);</span><br><span class="line">        httpClientBuilder.connectTimeout(10, TimeUnit.SECONDS);</span><br><span class="line"></span><br><span class="line">        retrofit = new Retrofit.Builder()</span><br><span class="line">                .client(httpClientBuilder.build())</span><br><span class="line">                .addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())</span><br><span class="line">                .baseUrl(BASE_URL)</span><br><span class="line">                .build();</span><br><span class="line"></span><br><span class="line">        appService = retrofit.create(MovieService.class);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 在访问HttpClient时创建单例</span><br><span class="line">    private static class SingletonHolder&#123;</span><br><span class="line">        private static final HttpClient INSTANCE = new HttpClient();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 获取单例</span><br><span class="line">    public static HttpMethods getInstance()&#123;</span><br><span class="line">        return SingletonHolder.INSTANCE;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 例如：获取图书信息</span><br><span class="line">     */</span><br><span class="line">    public void getTopMovie(Subscriber&lt;Book&gt; subscriber, int id)&#123;</span><br><span class="line">        appService.getBook(id)</span><br><span class="line">				.map(new HttpResultFunc&lt;Book&gt;())</span><br><span class="line">                .subscribeOn(Schedulers.io())</span><br><span class="line">                .unsubscribeOn(Schedulers.io())</span><br><span class="line">                .observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">                .subscribe(subscriber);</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">	/**</span><br><span class="line">	 * 根据返回的resultCode，过滤不存在的数据(resultCode如果不等于0，说明获取数据失败)</span><br><span class="line">	 */</span><br><span class="line">	private class HttpResultFunc&lt;T&gt; implements Func1&lt;HttpResult&lt;T&gt;, T&gt;&#123;</span><br><span class="line">	</span><br><span class="line">		@Override</span><br><span class="line">		public T call(HttpResult&lt;T&gt; httpResult) &#123;</span><br><span class="line">			if (httpResult.getResultCode() != 0) &#123;</span><br><span class="line">				// 此处抛出异常，map调用该对象时，结果会走到onError方法中</span><br><span class="line">				throw new RuntimeException(httpResult.getResultCode());</span><br><span class="line">			&#125;</span><br><span class="line">			return httpResult.getData();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>2.创建统一的HttpResult，根据服务端返回数据进行改写<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class HttpResult&lt;T&gt; &#123;</span><br><span class="line">    private int resultCode;</span><br><span class="line">    private String resultMsg;</span><br><span class="line"></span><br><span class="line">    private T data;</span><br><span class="line">	</span><br><span class="line">	// get/set...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>3.封装自己的结果回调接口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public abstract class HttpOnNextListener&lt;T&gt; &#123;</span><br><span class="line">    /**</span><br><span class="line">     * 成功后回调方法</span><br><span class="line">     * @param t</span><br><span class="line">     */</span><br><span class="line">    public abstract void onNext(T t);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 失败或者错误方法</span><br><span class="line">     * 主动调用，更加灵活</span><br><span class="line">     * @param e</span><br><span class="line">     */</span><br><span class="line">    public  void onError(Throwable e)&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 取消回調</span><br><span class="line">     */</span><br><span class="line">    public void onCancel()&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>4.封装ProgressSubscriber，根据数据处理控制ProgressDialog的显示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line">public class ProgressSubscriber&lt;T&gt; extends Subscriber&lt;T&gt; &#123;</span><br><span class="line"></span><br><span class="line">    private boolean showProgress = true;</span><br><span class="line"></span><br><span class="line">    private SoftReference&lt;HttpOnNextListener&gt; httpOnNextListener;</span><br><span class="line"></span><br><span class="line">    private SoftReference&lt;RxAppCompatActivity&gt; activity;</span><br><span class="line"></span><br><span class="line">    private ProgressDialog pd;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public ProgressSubscriber(HttpOnNextListener httpOnNextListener, Activity activity) &#123;</span><br><span class="line">        this.api = api;</span><br><span class="line">        this.httpOnNextListener = httpOnNextListener;</span><br><span class="line">        this.activity = new SoftReference&lt;&gt;(activity);</span><br><span class="line">		initProgressDialog();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onStart() &#123;</span><br><span class="line">        showProgressDialog();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onCompleted() &#123;</span><br><span class="line">        dismissProgressDialog();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onError(Throwable e) &#123;</span><br><span class="line">        dismissProgressDialog();</span><br><span class="line">        if (mSubscriberOnNextListener.get() != null) &#123;</span><br><span class="line">            mSubscriberOnNextListener.get().onError(e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onNext(T t) &#123;</span><br><span class="line">        if (mSubscriberOnNextListener.get() != null) &#123;</span><br><span class="line">            mSubscriberOnNextListener.get().onNext(t);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">   /**</span><br><span class="line">     * 初始化加载框</span><br><span class="line">     */</span><br><span class="line">    private void initProgressDialog() &#123;</span><br><span class="line">        Context context = activity.get();</span><br><span class="line">        if (pd == null &amp;&amp; context != null) &#123;</span><br><span class="line">            pd = new ProgressDialog(context);</span><br><span class="line">            </span><br><span class="line">			pd.setOnCancelListener(new DialogInterface.OnCancelListener() &#123;</span><br><span class="line">				@Override</span><br><span class="line">				public void onCancel(DialogInterface dialogInterface) &#123;</span><br><span class="line">					if (mSubscriberOnNextListener.get() != null) &#123;</span><br><span class="line">						mSubscriberOnNextListener.get().onCancel();</span><br><span class="line">					&#125;</span><br><span class="line">					onCancelProgress();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 显示加载框</span><br><span class="line">     */</span><br><span class="line">    private void showProgressDialog() &#123;</span><br><span class="line">        Context context = mActivity.get();</span><br><span class="line">        if (pd == null || context == null) return;</span><br><span class="line">        if (!pd.isShowing()) &#123;</span><br><span class="line">            pd.show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 隐藏</span><br><span class="line">     */</span><br><span class="line">    private void dismissProgressDialog() &#123;</span><br><span class="line">        if (!isShowProgress()) return;</span><br><span class="line">        if (pd != null &amp;&amp; pd.isShowing()) &#123;</span><br><span class="line">            pd.dismiss();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">	/**</span><br><span class="line">     * 取消ProgressDialog的时候，取消对observable的订阅，同时也取消了http请求</span><br><span class="line">     */</span><br><span class="line">    public void onCancelProgress() &#123;</span><br><span class="line">        if (!this.isUnsubscribed()) &#123;</span><br><span class="line">            this.unsubscribe();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>5.在activity中调用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">HttpOnNextListener listener = new HttpOnNextListener&lt;Book&gt;() &#123;</span><br><span class="line">	@Override</span><br><span class="line">	public void onNext(Book book) &#123;</span><br><span class="line">		...</span><br><span class="line">	&#125;</span><br><span class="line">	...</span><br><span class="line">&#125;;</span><br><span class="line">HttpClient.getInstance().getBook(new ProgressSubscriber(listener, activity), 10);</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/android/">android</a>
+		  
+			<a href="/tags/框架/">框架</a>
+		  
+			<a href="/tags/Retrofit/">Retrofit</a>
+		  
+			<a href="/tags/RxJava/">RxJava</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2018/03/06/Retrofit学习记录/">
+        <span class="next-text nav-default">Retrofit学习记录</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2018
+    <span class="footer-author">John Doe.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
