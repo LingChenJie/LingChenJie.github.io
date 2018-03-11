@@ -42,7 +42,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/03/10/Retrofit配合RxJava使用/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="记录Retrofit结合RxJava的使用">
-<meta property="og:updated_time" content="2018-03-11T06:49:55.044Z">
+<meta property="og:updated_time" content="2018-03-11T09:17:58.720Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Retrofit配合RxJava使用">
 <meta name="twitter:description" content="记录Retrofit结合RxJava的使用">
@@ -156,6 +156,9 @@
 </blockquote>
 <blockquote>
 <p>5.在activity中调用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">HttpOnNextListener listener = new HttpOnNextListener&lt;Book&gt;() &#123;</span><br><span class="line">	@Override</span><br><span class="line">	public void onNext(Book book) &#123;</span><br><span class="line">		...</span><br><span class="line">	&#125;</span><br><span class="line">	...</span><br><span class="line">&#125;;</span><br><span class="line">HttpClient.getInstance().getBook(new ProgressSubscriber(listener, activity), 10);</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>相信到这里，你已经清楚了<code>Retrofit</code>如何配合<code>RxJava</code>使用了吧，你可以根据自己项目来进行封装的调整，没有最好的封装，只有最适合的</p>
 </blockquote>
 
             </div>
