@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="记录android6.0运行时权限"/>
+
+
+
+
+  <meta name="keywords" content="android," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Hexo">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2018/03/12/android6.0运行时权限/"/>
+
+
+<meta name="description" content="记录android6.0运行时权限">
+<meta name="keywords" content="android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="android6.0运行时权限">
+<meta property="og:url" content="http://yoursite.com/2018/03/12/android6.0运行时权限/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="记录android6.0运行时权限">
+<meta property="og:updated_time" content="2018-03-14T08:38:16.743Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="android6.0运行时权限">
+<meta name="twitter:description" content="记录android6.0运行时权限">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> android6.0运行时权限 - Hexo </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Hexo</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          android6.0运行时权限
+        
+      </h1>
+
+      <time class="post-time">
+          Mar 12 2018
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>在android6.0开始，为了让用户清楚应用持有什么权限，就引入了运行时权限，所有危险的权限都需要动态申请，用户同意后，才能使用</p>
+<h4 id="危险权限组"><a href="#危险权限组" class="headerlink" title="危险权限组"></a>危险权限组</h4><blockquote>
+<p>说明：同一组中的某个权限经用户授权过，再次申请同组其他危险权限，系统会直接授权通过<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">CONTACTS 	#联系人相关</span><br><span class="line">PHONE 	#电话相关</span><br><span class="line">CALENDAR 	#日历相关</span><br><span class="line"></span><br><span class="line">CAMERA 		#相机相关</span><br><span class="line">SENSORS 	#震动相关</span><br><span class="line">LOCATION 	#位置相关</span><br><span class="line"></span><br><span class="line">STORAGE 	#储存卡相关</span><br><span class="line">MICROPHONE 	#麦克风相关</span><br><span class="line">SMS		 #短信相关</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="动态权限申请"><a href="#动态权限申请" class="headerlink" title="动态权限申请"></a>动态权限申请</h4><blockquote>
+<p>比如我们进行拍照，就需要申请权限，下面我们根据代码来学习如何进行权限申请，清单文件中不要忘记加入该权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">public class DemoActivity extends AppCompatActivity &#123;</span><br><span class="line"></span><br><span class="line">    private static final String TAG = MainActivity.class.getSimpleName();</span><br><span class="line"></span><br><span class="line">    private static final int REQUEST_CAMERA_CODE = 1;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 调用拍照</span><br><span class="line">     */</span><br><span class="line">    public void take_photo(View view) &#123;</span><br><span class="line">        requestPermission(Manifest.permission.CAMERA, REQUEST_CAMERA_CODE);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 请求授权</span><br><span class="line">     */</span><br><span class="line">    private void requestPermission(String permission, int requestCode) &#123;</span><br><span class="line"></span><br><span class="line">        // 判断是否进行过授权</span><br><span class="line">        if (!isGranted(permission)) &#123;</span><br><span class="line"></span><br><span class="line">            // 之前请求过授权，用户拒绝了权限申请，再次调用shouldShowRequestPermissionRationale会返回true</span><br><span class="line">            if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) &#123;</span><br><span class="line">                Log.d(TAG, &quot;上次请求授权被拒绝&quot;);</span><br><span class="line">				// 这里应该 提示用户为什么要授权	</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                // 进行权限申请</span><br><span class="line">                ActivityCompat.requestPermissions(this, new String[]&#123;permission&#125;, requestCode);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else &#123;  </span><br><span class="line">            Log.d(TAG, &quot;已经授权通过了&quot;);</span><br><span class="line">			// 直接执行相应操作了</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 权限申请的结果回调</span><br><span class="line">     */</span><br><span class="line">    @Override</span><br><span class="line">    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) &#123;</span><br><span class="line">        if (requestCode == REQUEST_CAMERA_CODE) &#123;</span><br><span class="line">            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) &#123;</span><br><span class="line">                Log.d(TAG, &quot;授权通过&quot;);</span><br><span class="line">                // 执行相应操作</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                // 授权拒绝</span><br><span class="line">                Toast.makeText(MainActivity.this, &quot;权限拒绝，将不能调用相机&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">            &#125;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        super.onRequestPermissionsResult(requestCode, permissions, grantResults);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public boolean isGranted(String permission) &#123;</span><br><span class="line">        return !isMarshmallow() || isGranted_(permission);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 判断该权限是否经过授权</span><br><span class="line">     */</span><br><span class="line">    private boolean isGranted_(String permission) &#123;</span><br><span class="line">        int checkSelfPermission = ActivityCompat.checkSelfPermission(this, permission);</span><br><span class="line">        return checkSelfPermission == PackageManager.PERMISSION_GRANTED;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 判断是否是android6.0以上</span><br><span class="line">     */</span><br><span class="line">    private boolean isMarshmallow() &#123;</span><br><span class="line">        return Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.M;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>动态权限申请还是挺简单的，不过还是有点麻烦，下面我们学习下使用<code>RxPermission</code>开源库</p>
+</blockquote>
+<h4 id="RxPermission使用"><a href="#RxPermission使用" class="headerlink" title="RxPermission使用"></a>RxPermission使用</h4><blockquote>
+<p> github地址：<a href="https://github.com/tbruyelle/RxPermissions" target="_blank" rel="noopener">https://github.com/tbruyelle/RxPermissions</a></p>
+</blockquote>
+<blockquote>
+<p>1.引入依赖，<code>minSdkVersion</code> 需要 &gt;= 11，在<code>build.gradle</code>加入以下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">android &#123;</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    packagingOptions &#123;</span><br><span class="line">		...</span><br><span class="line">        exclude &apos;META-INF/rxjava.properties&apos;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    ...</span><br><span class="line">    compile &apos;com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar&apos;</span><br><span class="line">    compile &apos;com.jakewharton.rxbinding:rxbinding:0.4.0&apos;</span><br><span class="line">    compile &apos;com.github.akarnokd:rxjava2-interop:0.8.0&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>2.拍照权限申请(获取单一权限)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">RxPermissions rxPermissions = new RxPermissions(this);</span><br><span class="line">rxPermissions</span><br><span class="line">	.request(Manifest.permission.CAMERA)</span><br><span class="line">	.subscribe(new Consumer&lt;Boolean&gt;() &#123;</span><br><span class="line">		@Override</span><br><span class="line">		public void accept(Boolean granted) throws Exception &#123;</span><br><span class="line">			if (granted) &#123; // 在android 6.0之前会默认返回true</span><br><span class="line">				// 已经获取权限</span><br><span class="line">				Toast.makeText(DemoActivity.this, &quot;获取拍照权限成功&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line"></span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				// 未获取权限</span><br><span class="line">				Toast.makeText(DemoActivity.this, &quot;获取拍照权限失败&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>3.拍照权限和读取电话状态权限申请(获取多个权限)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">RxPermissions rxPermissions = new RxPermissions(this);</span><br><span class="line">rxPermissions</span><br><span class="line">	.request(Manifest.permission.CAMERA,</span><br><span class="line">			Manifest.permission.READ_PHONE_STATE)</span><br><span class="line">	.subscribe(new Consumer&lt;Boolean&gt;() &#123;</span><br><span class="line">		@Override</span><br><span class="line">		public void accept(Boolean granted) throws Exception &#123;</span><br><span class="line">			if (granted) &#123;// 在android 6.0之前会默认返回true</span><br><span class="line">				// All requested permissions are granted</span><br><span class="line">				Toast.makeText(DemoActivity.this, &quot;权限获取成功&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				// At least one permission is denied</span><br><span class="line">				Toast.makeText(DemoActivity.this, &quot;至少有一项权限没有获取成功&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>4.拍照权限和读取电话状态权限申请(获取多个权限)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">RxPermissions rxPermissions = new RxPermissions(this);</span><br><span class="line">rxPermissions</span><br><span class="line">	.requestEach(Manifest.permission.CAMERA,</span><br><span class="line">			Manifest.permission.READ_PHONE_STATE)</span><br><span class="line">	.subscribe(new Consumer&lt;Permission&gt;() &#123;</span><br><span class="line">		@Override</span><br><span class="line">		public void accept(Permission permission) throws Exception &#123;</span><br><span class="line">			if (permission.granted) &#123;// 在android 6.0之前会默认返回true</span><br><span class="line">			</span><br><span class="line">				// `permission.name` is granted !</span><br><span class="line">				Toast.makeText(DemoActivity.this, permission.name + &quot;权限获取成功&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">			&#125; else if (permission.shouldShowRequestPermissionRationale) &#123;</span><br><span class="line">			</span><br><span class="line">				// Denied permission without ask never again</span><br><span class="line">				Toast.makeText(DemoActivity.this, permission.name + &quot;权限被拒绝&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">			</span><br><span class="line">				// Denied permission with ask never again</span><br><span class="line">				// Need to go to the settings</span><br><span class="line">				Toast.makeText(DemoActivity.this, &quot;权限拒绝&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>总结：使用了<code>RxPermission</code>来控制权限，是不是变的简单多了，申请权限和回调在一个调用链中，更加清晰</p>
+</blockquote>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/android/">android</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2018/03/12/Retrofit上传下载进度回调/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Retrofit上传下载进度回调</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2018/03/10/Retrofit配合RxJava使用/">
+        <span class="next-text nav-default">Retrofit配合RxJava使用</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2018
+    <span class="footer-author">John Doe.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
