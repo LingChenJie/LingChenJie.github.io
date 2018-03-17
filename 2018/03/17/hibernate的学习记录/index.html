@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="记录hibernate的基本知识点"/>
+
+
+
+
+  <meta name="keywords" content="java,web框架," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Hexo">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2018/03/17/hibernate的学习记录/"/>
+
+
+<meta name="description" content="记录hibernate的基本知识点">
+<meta name="keywords" content="java,web框架">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hibernate的学习记录">
+<meta property="og:url" content="http://yoursite.com/2018/03/17/hibernate的学习记录/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="记录hibernate的基本知识点">
+<meta property="og:image" content="http://yoursite.com/2018/03/17/hibernate的学习记录/hibernate_1.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/17/hibernate的学习记录/hibernate_2.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/17/hibernate的学习记录/hibernate_3.png">
+<meta property="og:updated_time" content="2018-03-17T16:49:21.546Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hibernate的学习记录">
+<meta name="twitter:description" content="记录hibernate的基本知识点">
+<meta name="twitter:image" content="http://yoursite.com/2018/03/17/hibernate的学习记录/hibernate_1.png">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> hibernate的学习记录 - Hexo </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">Hexo</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          hibernate的学习记录
+        
+      </h1>
+
+      <time class="post-time">
+          Mar 17 2018
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>Hibernate 操作数据库的时候，可以以面向对象的方式来完成，它是一款 orm 框架(对象关系映射)，不需要书写 SQL 语句.</p>
+<p>hibernate 的下载地址：<a href="http://hibernate.org/orm/releases" target="_blank" rel="noopener">http://hibernate.org/orm/releases</a> ，本文使用的 hibernate 5.0.7</p>
+<h4 id="hibernate框架环境搭建"><a href="#hibernate框架环境搭建" class="headerlink" title="hibernate框架环境搭建"></a>hibernate框架环境搭建</h4><blockquote>
+<p>1.导包<br>①数据连接驱动包：mysql-connector-java-5.1.7-bin.jar<br>② hibernate 所需的 jar 包，如下<br><img src="/2018/03/17/hibernate的学习记录/hibernate_1.png" alt="hibernate"></p>
+</blockquote>
+<blockquote>
+<p>2.创建 hibernate 核心配置文件，以及相应的实体类和 ORM 元数据，如下<br><img src="/2018/03/17/hibernate的学习记录/hibernate_2.png" alt="hibernate"></p>
+</blockquote>
+<blockquote>
+<p>① 主配置文件 hibernate.cfg.xml<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="meta">&lt;!DOCTYPE hibernate-configuration PUBLIC</span></span><br><span class="line"><span class="meta">        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"</span></span><br><span class="line"><span class="meta">        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd"&gt;</span></span><br><span class="line">		</span><br><span class="line"><span class="tag">&lt;<span class="name">hibernate-configuration</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">session-factory</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernate.connection.driver_class"</span>&gt;</span>com.mysql.jdbc.Driver<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernate.connection.url"</span>&gt;</span>jdbc:mysql:///hibernate_db<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernate.connection.username"</span>&gt;</span>root<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernate.connection.password"</span>&gt;</span>654321<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 数据库方言 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernate.dialect"</span>&gt;</span>org.hibernate.dialect.MySQLDialect<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 指定session与当前线程绑定 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernate.current_session_context_class"</span>&gt;</span>thread<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- 指定hibernate操作数据库的隔离级别 1|2|4|8 --- 读未提交 | 读已提交 | 可重复读 | 串行化 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernate.connection.isolation"</span>&gt;</span>4<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line">		<span class="comment">&lt;!-- 将hibernate生成的sql语句格式化，并打印在控制台上 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernate.show_sql"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernate.format_sql"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">        <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">            auto schema export 自动导出表结构. 自动建表，有以下选项，一般常用 update</span></span><br><span class="line"><span class="comment">			</span></span><br><span class="line"><span class="comment">				create：自动建表.每次框架运行都会创建新的表.以前表将会被覆盖,表数据会丢失.(开发环境中测试使用)</span></span><br><span class="line"><span class="comment">				create-drop：自动建表.每次框架运行结束都会将所有表删除.(开发环境中测试使用)</span></span><br><span class="line"><span class="comment">				update：自动生成表，如果已经存在不会再生成.如果表有变动.自动更新表(不会删除任何数据).</span></span><br><span class="line"><span class="comment">				validate：校验.不自动生成表.每次启动会校验数据库中表是否正确</span></span><br><span class="line"><span class="comment">         --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernate.hbm2ddl.auto"</span>&gt;</span>update<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">        <span class="comment">&lt;!-- 引入orm元数据  --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mapping</span> <span class="attr">resource</span>=<span class="string">"com/paxsh/hbn/bean/Customer.hbm.xml"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mapping</span> <span class="attr">resource</span>=<span class="string">"com/paxsh/hbn/bean/LinkMan.hbm.xml"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">session-factory</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">hibernate-configuration</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>② 实体对象 Customer.java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Customer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Long cust_id;</span><br><span class="line">    <span class="keyword">private</span> String cust_name;</span><br><span class="line">    <span class="keyword">private</span> String cust_source;</span><br><span class="line">    <span class="keyword">private</span> String cust_industry;</span><br><span class="line">    <span class="keyword">private</span> String cust_level;</span><br><span class="line">    <span class="keyword">private</span> String cust_linkman;</span><br><span class="line">    <span class="keyword">private</span> String cust_phone;</span><br><span class="line">    <span class="keyword">private</span> String cust_mobile;</span><br><span class="line">		</span><br><span class="line">	<span class="comment">// set/get</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>③ orm 元数据 Customer.hbm.xml<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="meta">&lt;!DOCTYPE hibernate-mapping PUBLIC</span></span><br><span class="line"><span class="meta">        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"</span></span><br><span class="line"><span class="meta">        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">hibernate-mapping</span> <span class="attr">package</span>=<span class="string">"com.paxsh.hbn.bean"</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">class</span> <span class="attr">name</span>=<span class="string">"com.paxsh.hbn.bean.Customer"</span> <span class="attr">table</span>=<span class="string">"Customer"</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">		<span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">			name: 填写主键对应属性名</span></span><br><span class="line"><span class="comment">			column(可选): 填写表中的主键列名，列名会默认使用属性名</span></span><br><span class="line"><span class="comment">			type(可选):填写列(属性)的类型.hibernate会自动检测实体的属性类型.</span></span><br><span class="line"><span class="comment">					每个类型有三种填法: java类型|hibernate类型|数据库类型</span></span><br><span class="line"><span class="comment">			not-null(可选):配置该属性(列)是否不能为空. 默认值:false</span></span><br><span class="line"><span class="comment">			length(可选):配置数据库中列的长度. 默认值:使用数据库类型的最大长度</span></span><br><span class="line"><span class="comment">		--&gt;</span></span><br><span class="line">		</span><br><span class="line">        <span class="comment">&lt;!-- 主键属性的映射--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span> <span class="attr">name</span>=<span class="string">"cust_id"</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">				主键生成策略</span></span><br><span class="line"><span class="comment">					native：hilo(Orcale的主键策略) + increment(主键自增) + hilo(高低位算法自增)，自动三选一</span></span><br><span class="line"><span class="comment">					uuid：使用 uuid 作为主键</span></span><br><span class="line"><span class="comment">					assigned：自然主键，hibernate 不会管理主键值，需要自己录入</span></span><br><span class="line"><span class="comment">			--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">generator</span> <span class="attr">class</span>=<span class="string">"native"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">        <span class="comment">&lt;!-- 普通元素属性映射 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"cust_name"</span> <span class="attr">column</span>=<span class="string">"cust_name"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"cust_industry"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"cust_level"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"cust_linkman"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"cust_phone"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"cust_mobile"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">hibernate-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>④ 进行测试<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomerTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">save</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// configure() 会读取src的 hibernate.cfg.xml 文件</span></span><br><span class="line">        Configuration config = <span class="keyword">new</span> Configuration().configure();</span><br><span class="line"></span><br><span class="line">		<span class="comment">// SessionFactory 用于创建 Session，它负责保存和使用所有配置信息，消耗内存比较大，尽量一个项目中只创建一个 SessionFactory</span></span><br><span class="line">        SessionFactory sessionFactory = config.buildSessionFactory();</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Session 表示 hibernate 框架与数据库之间的会话，类似于 jdbc 的 connection 对象 </span></span><br><span class="line">        Session session = sessionFactory.openSession();</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 开启并获取事务</span></span><br><span class="line">        Transaction transaction = session.beginTransaction();</span><br><span class="line"></span><br><span class="line">        Customer c = <span class="keyword">new</span> Customer();</span><br><span class="line">        c.setCust_name(<span class="string">"杰辰"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 执行保存</span></span><br><span class="line">        session.save(c);</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 提交事务commit，回滚事务rollback</span></span><br><span class="line">        transaction.commit();</span><br><span class="line">        session.close();</span><br><span class="line">        sessionFactory.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>注：需要提前在 mysql 新建一个数据库 hibernate_db ， 因为 hibernate.hbm2ddl.auto 的值为 update ，会自动创建表</p>
+</blockquote>
+<p>通过上面的 hibernate 环境的搭建和实现了小 demo ，我们基本了解了 hibernate 开发流程，接下来对 hibernate 的一些知识点补充</p>
+<h4 id="hibernate的对象状态"><a href="#hibernate的对象状态" class="headerlink" title="hibernate的对象状态"></a>hibernate的对象状态</h4><blockquote>
+<p>对象分为三种状态</p>
+<ol>
+<li>瞬时状态：没有 id ，没有在 session 缓存中</li>
+<li>持久化状态：有 id，在 session 缓存中</li>
+<li>游离 | 托管状态：有 id，没有在 session 缓存中</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>对要同步到数据库中的数据，要将对应的对象转为持久化状态<br><img src="/2018/03/17/hibernate的学习记录/hibernate_3.png" alt="hibernate"></p>
+</blockquote>
+<h4 id="hibernate的一级缓存"><a href="#hibernate的一级缓存" class="headerlink" title="hibernate的一级缓存"></a>hibernate的一级缓存</h4><blockquote>
+<p>缓存的作用是为了提高查询效率</p>
+</blockquote>
+<blockquote>
+<p>hibernate 的缓存原理及如何提交效率</p>
+<ol>
+<li>调用 get 查询，先从缓存中查看是否存在该对象，不存在则发送 sql 到数据库，如果有直接返回缓存中</li>
+<li>当修改了缓存对象，事务提交的时候，hibernate 会对比缓存中对象和快照，如果有变化会同步到数据库中</li>
+<li>减少不必要的修改语句</li>
+</ol>
+</blockquote>
+<h4 id="hibernate的事务"><a href="#hibernate的事务" class="headerlink" title="hibernate的事务"></a>hibernate的事务</h4><blockquote>
+<p>事务的特性：A(原子性) C(一致性) I(隔离性) D(持久性)</p>
+</blockquote>
+<blockquote>
+<p>事务并发的问题： a.脏读 b.不可重复度 c.幻|虚读</p>
+</blockquote>
+<blockquote>
+<p>事务的隔离级别：读未提交(abc)、 读已提交(bc)、 可重复读(c)(mysql默认级别)、 串行化(没有问题)</p>
+</blockquote>
+<blockquote>
+<p>hibernate 如何指定事务隔离级别：见上面 hibernate.cfg.xml 中的配置</p>
+</blockquote>
+<blockquote>
+<p>在项目中如何管理事务</p>
+<ol>
+<li>业务开始之前打开事务，业务执行之后提交事务，执行过程中出现异常，事务回滚.</li>
+<li>在 dao 层操作数据库需要用到 session 对象.在 service 控制事务也是使用 session 对象完成. 我们要确保 dao 层和 service 层使用的使用同一个 session 对象.</li>
+<li>调用 getCurrentSession 方法必须配合主配置中的一段配置<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 指定session与当前线程绑定 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernate.current_session_context_class"</span>&gt;</span>thread<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>4.通过 getCurrentSession 方法获得的 session 对象，当事务提交时， session 会自动关闭，不要手动调用 close 关闭.</p>
+</blockquote>
+<h4 id="hibernate的批量查询-单表"><a href="#hibernate的批量查询-单表" class="headerlink" title="hibernate的批量查询(单表)"></a>hibernate的批量查询(单表)</h4><blockquote>
+<p>1.HQL 查询(Hibernate Query Language)<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Hibernate独家查询语言，属于面向对象的查询语言</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 基本查询，查询所有客户信息</span></span><br><span class="line">String hql = <span class="string">"from Customer"</span>;</span><br><span class="line">Query query = session.createQuery(hql);</span><br><span class="line"><span class="comment">// query.uniqueResult(); 接受唯一的查询结果</span></span><br><span class="line">List&lt;Customer&gt; list = query.list();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 条件查询，? 号占位符，查询cust_id为1的客户</span></span><br><span class="line">String hql = <span class="string">"from Customer where cust_id = ?"</span>;</span><br><span class="line">Query query = session.createQuery(hql);</span><br><span class="line">query.setParameter(<span class="number">0</span>, <span class="number">1l</span>);</span><br><span class="line">Customer c = query.uniqueResult();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 条件查询，命名占位符，查询cust_id为1的客户</span></span><br><span class="line">String hql = <span class="string">"from Customer where cust_id = :cust_id"</span>;</span><br><span class="line">Query query = session.createQuery(hql);</span><br><span class="line">query.setParameter(<span class="string">"cust_id"</span>, <span class="number">1l</span>);</span><br><span class="line">Customer c = query.uniqueResult();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 分页查询</span></span><br><span class="line">String hql = <span class="string">"from Customer"</span>;</span><br><span class="line">Query query = session.createQuery(hql);</span><br><span class="line"><span class="comment">// 设置分页信息 limit ? , ?</span></span><br><span class="line">query.setFirstResult(<span class="number">1</span>);</span><br><span class="line">query.setMaxResult(<span class="number">6</span>);</span><br><span class="line">List&lt;Customer&gt; list = query.list();</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>2.Criteria 查询<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Hibernate自创的无语句面向对象查询</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 基本查询，查询所有客户信息</span></span><br><span class="line">Criteria criteria = session.createCriteria(Customer.class);</span><br><span class="line">List&lt;Customer&gt; list = criteria.list();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 条件查询，查询cust_id为1的客户</span></span><br><span class="line">Criteria criteria = session.createCriteria(Customer.class);</span><br><span class="line">criteria.add(Restrictions.eq(<span class="string">"cust_id"</span>, <span class="number">1l</span>));</span><br><span class="line">Customer c = criteria.uniqueResult();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 分页查询</span></span><br><span class="line">Criteria criteria = session.createCriteria(Customer.class);</span><br><span class="line">criteria.setFirstResult(<span class="number">1</span>);</span><br><span class="line">criteria.setMaxResult(<span class="number">6</span>);</span><br><span class="line">List&lt;Customer&gt; list = criteria.list();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查询总记录数</span></span><br><span class="line">Criteria criteria = session.createCriteria(Customer.class);</span><br><span class="line"><span class="comment">// 设置查询的聚合函数</span></span><br><span class="line">criteria.setProjection(Projections.rowCount());</span><br><span class="line">Long count = criteria.uniqueResult();</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>3.原生 SQL 查询<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 基本查询，查询所有客户信息</span></span><br><span class="line">String sql = <span class="string">"select * from customer"</span>;</span><br><span class="line"><span class="comment">// 创建sql查询对象</span></span><br><span class="line">SQLQuery query = session.createSQLQuery(sql);</span><br><span class="line">query.addEntity(Customer.class);</span><br><span class="line">List&lt;Customer&gt; list = query.list();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 条件查询，查询cust_id为1的客户</span></span><br><span class="line">String sql = <span class="string">"select * from customer wehere cust_id = ?"</span>;</span><br><span class="line">SQLQuery query = session.createSQLQuery(sql);</span><br><span class="line">query.setParameter(<span class="number">0</span>, <span class="number">1l</span>);</span><br><span class="line">query.addEntity(Customer.class);</span><br><span class="line">List&lt;Customer&gt; list = query.list();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 分页查询</span></span><br><span class="line">String sql = <span class="string">"select * from customer limit ?,?"</span>;</span><br><span class="line">SQLQuery query = session.createSQLQuery(sql);</span><br><span class="line">query.setParameter(<span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line">query.setParameter(<span class="number">1</span>, <span class="number">6</span>);</span><br><span class="line">query.addEntity(Customer.class);</span><br><span class="line">List&lt;Customer&gt; list = query.list();</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="hibernate的多表操作"><a href="#hibernate的多表操作" class="headerlink" title="hibernate的多表操作"></a>hibernate的多表操作</h4><p>在本例中，一个客户(Customer)有多个联系人(LinkMan)</p>
+<blockquote>
+<p>1.一对多 | 多对一<br>①我们在 Customer 的一方使用 Set 表示有多个 LinkMan<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Customer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Long cust_id;</span><br><span class="line">    <span class="keyword">private</span> String cust_name;</span><br><span class="line">    <span class="keyword">private</span> String cust_source;</span><br><span class="line">    <span class="keyword">private</span> String cust_industry;</span><br><span class="line">    <span class="keyword">private</span> String cust_level;</span><br><span class="line">    <span class="keyword">private</span> String cust_linkman;</span><br><span class="line">    <span class="keyword">private</span> String cust_phone;</span><br><span class="line">    <span class="keyword">private</span> String cust_mobile;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用集合表达一对多</span></span><br><span class="line">    <span class="keyword">private</span> Set&lt;LinkMan&gt; linkMans = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// set/get</span></span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>②我们在 LinkMan 的一方引用 Customer 对象，表示归属 Customer<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LinkMan</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Long lkm_id;</span><br><span class="line">    <span class="keyword">private</span> Character lkm_gender;</span><br><span class="line">    <span class="keyword">private</span> String lkm_name;</span><br><span class="line">    <span class="keyword">private</span> String lkm_phone;</span><br><span class="line">    <span class="keyword">private</span> String lkm_email;</span><br><span class="line">    <span class="keyword">private</span> String lkm_qq;</span><br><span class="line">    <span class="keyword">private</span> String lkm_mobile;</span><br><span class="line">    <span class="keyword">private</span> String lkm_memo;</span><br><span class="line">    <span class="keyword">private</span> String lkm_position;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 引用对方对象表达 多对一的关系</span></span><br><span class="line">    <span class="keyword">private</span> Customer customer;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// set/get</span></span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>③ orm 元数据修改<br>Customer.hbm.xml<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="meta">&lt;!DOCTYPE hibernate-mapping PUBLIC</span></span><br><span class="line"><span class="meta">        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"</span></span><br><span class="line"><span class="meta">        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">hibernate-mapping</span> <span class="attr">package</span>=<span class="string">"com.paxsh.hbn.bean"</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">	<span class="tag">&lt;<span class="name">class</span> <span class="attr">name</span>=<span class="string">"com.paxsh.hbn.bean.Customer"</span> <span class="attr">table</span>=<span class="string">"Customer"</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">		...</span><br><span class="line">        </span><br><span class="line">        <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">            name属性：集合的属性名</span></span><br><span class="line"><span class="comment">            column属性：外键列名</span></span><br><span class="line"><span class="comment">            class属性：相关联对象的类名</span></span><br><span class="line"><span class="comment">        --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">set</span> <span class="attr">name</span>=<span class="string">"linkMans"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">key</span> <span class="attr">column</span>=<span class="string">"lkm_cust_id"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">one-to-many</span> <span class="attr">class</span>=<span class="string">"LinkMan"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">set</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">class</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">hibernate-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>LinkMan.hbm.xml<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="meta">&lt;!DOCTYPE hibernate-mapping PUBLIC</span></span><br><span class="line"><span class="meta">        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"</span></span><br><span class="line"><span class="meta">        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hibernate-mapping</span> <span class="attr">package</span>=<span class="string">"com.paxsh.hbn.bean"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">class</span> <span class="attr">name</span>=<span class="string">"com.paxsh.hbn.bean.LinkMan"</span> <span class="attr">table</span>=<span class="string">"LinkMan"</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">        ...</span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">            name属性:引用属性名</span></span><br><span class="line"><span class="comment">            column属性: 外键列名</span></span><br><span class="line"><span class="comment">            class属性: 与我关联的对象完整类名</span></span><br><span class="line"><span class="comment">         --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 多的一方: 不能放弃维护关系的.外键字段就在多的一方.  --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">many-to-one</span> <span class="attr">name</span>=<span class="string">"customer"</span> <span class="attr">column</span>=<span class="string">"lkm_cust_id"</span> <span class="attr">class</span>=<span class="string">"com.paxsh.hbn.bean.Customer"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">hibernate-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>③ 测试<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void saveCustomer2LinkMan() &#123;</span><br><span class="line">	Configuration config = new Configuration().configure();</span><br><span class="line"></span><br><span class="line">	SessionFactory sessionFactory = config.buildSessionFactory();</span><br><span class="line"></span><br><span class="line">	Session session = sessionFactory.openSession();</span><br><span class="line"></span><br><span class="line">	Transaction transaction = session.beginTransaction();</span><br><span class="line"></span><br><span class="line">	// ---------</span><br><span class="line">	Customer customer = new Customer();</span><br><span class="line">	customer.setCust_name(&quot;杰辰&quot;);</span><br><span class="line"></span><br><span class="line">	LinkMan linkMan = new LinkMan();</span><br><span class="line">	linkMan.setLkm_name(&quot;小明&quot;);</span><br><span class="line">	LinkMan linkMan2 = new LinkMan();</span><br><span class="line">	linkMan.setLkm_name(&quot;小张&quot;);</span><br><span class="line"></span><br><span class="line">	customer.getLinkMans().add(linkMan);</span><br><span class="line">	customer.getLinkMans().add(linkMan2);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	session.save(customer);</span><br><span class="line">	session.save(linkMan);</span><br><span class="line">	session.save(linkMan2);</span><br><span class="line">	// ---------</span><br><span class="line"></span><br><span class="line">	transaction.commit();</span><br><span class="line">	session.close();</span><br><span class="line">	sessionFactory.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>2.级联操作<br>简化操作，一般使用 save-update，不建议使用 delete<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--</span><br><span class="line">   cascade(级联操作):	</span><br><span class="line">	   save-update: 级联保存更新</span><br><span class="line">	   delete:级联删除</span><br><span class="line">	   all:save-update+delete</span><br><span class="line">   级联操作: 简化操作.目的就是为了少些两行代码.</span><br><span class="line">--&gt;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>3.关系维护<br>在保存时，两方都会维护外键关系，关系维护两次，冗余了，多余的维护关系语句，显然是客户这一端在维护关系<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- </span><br><span class="line">	inverse(配置关系是否维护)：</span><br><span class="line">		true：不维护关系</span><br><span class="line">		false：维护关系，默认值</span><br><span class="line">		</span><br><span class="line">	一对多的关系中，一的一方可以放弃维护，多的一方不能放弃维护</span><br><span class="line">--&gt;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/java/">java</a>
+		  
+			<a href="/tags/web框架/">web框架</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2018/03/15/Mybatis的学习记录/">
+        <span class="next-text nav-default">Mybatis的学习记录</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2018
+    <span class="footer-author">John Doe.</span>
+    <span class="power-by">
+        由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a> 强力驱动
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
