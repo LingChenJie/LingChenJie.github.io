@@ -45,7 +45,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/03/19/Struts2的学习记录/struts_1.png">
 <meta property="og:image" content="http://yoursite.com/2018/03/19/Struts2的学习记录/struts_2.png">
 <meta property="og:image" content="http://yoursite.com/2018/03/19/Struts2的学习记录/struts_3.png">
-<meta property="og:updated_time" content="2018-03-19T08:20:30.085Z">
+<meta property="og:updated_time" content="2018-03-19T08:22:13.145Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Struts2的学习记录">
 <meta name="twitter:description" content="记录Strust2基本知识点">
@@ -185,7 +185,7 @@
 <p>3.通过实现接口方式<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo7Action</span> <span class="keyword">extends</span> <span class="title">ActionSupport</span> <span class="keyword">implements</span> <span class="title">ServletRequestAware</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = Demo7Action.class.getSimpleName();</span><br><span class="line">    <span class="keyword">private</span> HttpServletRequest request;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">execute</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(TAG);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> SUCCESS;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setServletRequest</span><span class="params">(HttpServletRequest httpServletRequest)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.request = httpServletRequest;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <h4 id="Action-如何获得参数"><a href="#Action-如何获得参数" class="headerlink" title="Action 如何获得参数"></a>Action 如何获得参数</h4><blockquote>
-<p>Action 的声明周期</p>
+<p>Action 的生命周期</p>
 <ol>
 <li>每次请求到来时,都会创建一个新的Action实例</li>
 <li>Action是线程安全的.可以使用成员变量接收参数</li>
