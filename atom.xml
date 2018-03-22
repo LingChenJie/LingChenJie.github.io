@@ -5,9 +5,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://lingchenjie.club/"/>
   <updated>2018-03-21T16:03:05.786Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://lingchenjie.club/</id>
   
   <author>
     <name>John Doe</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>spring和其它框架的整合</title>
-    <link href="http://yoursite.com/2018/03/21/spring%E5%92%8C%E5%85%B6%E5%AE%83%E6%A1%86%E6%9E%B6%E7%9A%84%E6%95%B4%E5%90%88/"/>
-    <id>http://yoursite.com/2018/03/21/spring和其它框架的整合/</id>
+    <link href="http://lingchenjie.club/2018/03/21/spring%E5%92%8C%E5%85%B6%E5%AE%83%E6%A1%86%E6%9E%B6%E7%9A%84%E6%95%B4%E5%90%88/"/>
+    <id>http://lingchenjie.club/2018/03/21/spring和其它框架的整合/</id>
     <published>2018-03-21T10:15:35.000Z</published>
     <updated>2018-03-21T16:03:05.786Z</updated>
     
@@ -31,27 +31,27 @@
     
     </summary>
     
-      <category term="默认分类" scheme="http://yoursite.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+      <category term="默认分类" scheme="http://lingchenjie.club/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
     
     
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+      <category term="java" scheme="http://lingchenjie.club/tags/java/"/>
     
-      <category term="web框架" scheme="http://yoursite.com/tags/web%E6%A1%86%E6%9E%B6/"/>
+      <category term="web框架" scheme="http://lingchenjie.club/tags/web%E6%A1%86%E6%9E%B6/"/>
     
-      <category term="spring" scheme="http://yoursite.com/tags/spring/"/>
+      <category term="spring" scheme="http://lingchenjie.club/tags/spring/"/>
     
-      <category term="Struts2" scheme="http://yoursite.com/tags/Struts2/"/>
+      <category term="Struts2" scheme="http://lingchenjie.club/tags/Struts2/"/>
     
-      <category term="Hibernate" scheme="http://yoursite.com/tags/Hibernate/"/>
+      <category term="Hibernate" scheme="http://lingchenjie.club/tags/Hibernate/"/>
     
-      <category term="Mybaits" scheme="http://yoursite.com/tags/Mybaits/"/>
+      <category term="Mybaits" scheme="http://lingchenjie.club/tags/Mybaits/"/>
     
   </entry>
   
   <entry>
     <title>spring的学习记录</title>
-    <link href="http://yoursite.com/2018/03/19/spring%E7%9A%84%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
-    <id>http://yoursite.com/2018/03/19/spring的学习记录/</id>
+    <link href="http://lingchenjie.club/2018/03/19/spring%E7%9A%84%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    <id>http://lingchenjie.club/2018/03/19/spring的学习记录/</id>
     <published>2018-03-19T08:42:30.000Z</published>
     <updated>2018-03-20T09:30:48.712Z</updated>
     
@@ -63,21 +63,21 @@
     
     </summary>
     
-      <category term="默认分类" scheme="http://yoursite.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+      <category term="默认分类" scheme="http://lingchenjie.club/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
     
     
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+      <category term="java" scheme="http://lingchenjie.club/tags/java/"/>
     
-      <category term="web框架" scheme="http://yoursite.com/tags/web%E6%A1%86%E6%9E%B6/"/>
+      <category term="web框架" scheme="http://lingchenjie.club/tags/web%E6%A1%86%E6%9E%B6/"/>
     
-      <category term="spring" scheme="http://yoursite.com/tags/spring/"/>
+      <category term="spring" scheme="http://lingchenjie.club/tags/spring/"/>
     
   </entry>
   
   <entry>
     <title>struts2+spring+hibernate小案列</title>
-    <link href="http://yoursite.com/2018/03/19/struts2-spring-hibernate%E5%B0%8F%E6%A1%88%E5%88%97/"/>
-    <id>http://yoursite.com/2018/03/19/struts2-spring-hibernate小案列/</id>
+    <link href="http://lingchenjie.club/2018/03/19/struts2-spring-hibernate%E5%B0%8F%E6%A1%88%E5%88%97/"/>
+    <id>http://lingchenjie.club/2018/03/19/struts2-spring-hibernate小案列/</id>
     <published>2018-03-19T08:38:44.000Z</published>
     <updated>2018-03-19T08:40:19.480Z</updated>
     
@@ -87,25 +87,25 @@
     
     </summary>
     
-      <category term="默认分类" scheme="http://yoursite.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+      <category term="默认分类" scheme="http://lingchenjie.club/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
     
     
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+      <category term="java" scheme="http://lingchenjie.club/tags/java/"/>
     
-      <category term="web框架" scheme="http://yoursite.com/tags/web%E6%A1%86%E6%9E%B6/"/>
+      <category term="web框架" scheme="http://lingchenjie.club/tags/web%E6%A1%86%E6%9E%B6/"/>
     
-      <category term="Strust2" scheme="http://yoursite.com/tags/Strust2/"/>
+      <category term="Strust2" scheme="http://lingchenjie.club/tags/Strust2/"/>
     
-      <category term="spring" scheme="http://yoursite.com/tags/spring/"/>
+      <category term="spring" scheme="http://lingchenjie.club/tags/spring/"/>
     
-      <category term="hibernate" scheme="http://yoursite.com/tags/hibernate/"/>
+      <category term="hibernate" scheme="http://lingchenjie.club/tags/hibernate/"/>
     
   </entry>
   
   <entry>
     <title>Struts2的学习记录</title>
-    <link href="http://yoursite.com/2018/03/19/Struts2%E7%9A%84%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
-    <id>http://yoursite.com/2018/03/19/Struts2的学习记录/</id>
+    <link href="http://lingchenjie.club/2018/03/19/Struts2%E7%9A%84%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    <id>http://lingchenjie.club/2018/03/19/Struts2的学习记录/</id>
     <published>2018-03-19T02:31:18.000Z</published>
     <updated>2018-03-19T08:22:13.145Z</updated>
     
@@ -117,21 +117,21 @@
     
     </summary>
     
-      <category term="默认分类" scheme="http://yoursite.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+      <category term="默认分类" scheme="http://lingchenjie.club/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
     
     
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+      <category term="java" scheme="http://lingchenjie.club/tags/java/"/>
     
-      <category term="web框架" scheme="http://yoursite.com/tags/web%E6%A1%86%E6%9E%B6/"/>
+      <category term="web框架" scheme="http://lingchenjie.club/tags/web%E6%A1%86%E6%9E%B6/"/>
     
-      <category term="Strust2" scheme="http://yoursite.com/tags/Strust2/"/>
+      <category term="Strust2" scheme="http://lingchenjie.club/tags/Strust2/"/>
     
   </entry>
   
   <entry>
     <title>hibernate的学习记录</title>
-    <link href="http://yoursite.com/2018/03/17/hibernate%E7%9A%84%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
-    <id>http://yoursite.com/2018/03/17/hibernate的学习记录/</id>
+    <link href="http://lingchenjie.club/2018/03/17/hibernate%E7%9A%84%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    <id>http://lingchenjie.club/2018/03/17/hibernate的学习记录/</id>
     <published>2018-03-17T08:22:47.000Z</published>
     <updated>2018-03-19T02:38:18.376Z</updated>
     
@@ -143,21 +143,21 @@
     
     </summary>
     
-      <category term="默认分类" scheme="http://yoursite.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+      <category term="默认分类" scheme="http://lingchenjie.club/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
     
     
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+      <category term="java" scheme="http://lingchenjie.club/tags/java/"/>
     
-      <category term="web框架" scheme="http://yoursite.com/tags/web%E6%A1%86%E6%9E%B6/"/>
+      <category term="web框架" scheme="http://lingchenjie.club/tags/web%E6%A1%86%E6%9E%B6/"/>
     
-      <category term="hibernate" scheme="http://yoursite.com/tags/hibernate/"/>
+      <category term="hibernate" scheme="http://lingchenjie.club/tags/hibernate/"/>
     
   </entry>
   
   <entry>
     <title>Mybatis的学习记录</title>
-    <link href="http://yoursite.com/2018/03/15/Mybatis%E7%9A%84%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
-    <id>http://yoursite.com/2018/03/15/Mybatis的学习记录/</id>
+    <link href="http://lingchenjie.club/2018/03/15/Mybatis%E7%9A%84%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    <id>http://lingchenjie.club/2018/03/15/Mybatis的学习记录/</id>
     <published>2018-03-15T06:26:57.000Z</published>
     <updated>2018-03-18T11:42:38.404Z</updated>
     
@@ -169,19 +169,19 @@
     
     </summary>
     
-      <category term="默认分类" scheme="http://yoursite.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+      <category term="默认分类" scheme="http://lingchenjie.club/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
     
     
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+      <category term="java" scheme="http://lingchenjie.club/tags/java/"/>
     
-      <category term="web框架" scheme="http://yoursite.com/tags/web%E6%A1%86%E6%9E%B6/"/>
+      <category term="web框架" scheme="http://lingchenjie.club/tags/web%E6%A1%86%E6%9E%B6/"/>
     
   </entry>
   
   <entry>
     <title>Retrofit上传下载进度回调</title>
-    <link href="http://yoursite.com/2018/03/12/Retrofit%E4%B8%8A%E4%BC%A0%E4%B8%8B%E8%BD%BD%E8%BF%9B%E5%BA%A6%E5%9B%9E%E8%B0%83/"/>
-    <id>http://yoursite.com/2018/03/12/Retrofit上传下载进度回调/</id>
+    <link href="http://lingchenjie.club/2018/03/12/Retrofit%E4%B8%8A%E4%BC%A0%E4%B8%8B%E8%BD%BD%E8%BF%9B%E5%BA%A6%E5%9B%9E%E8%B0%83/"/>
+    <id>http://lingchenjie.club/2018/03/12/Retrofit上传下载进度回调/</id>
     <published>2018-03-12T08:11:14.000Z</published>
     <updated>2018-03-18T11:42:59.036Z</updated>
     
@@ -193,21 +193,21 @@
     
     </summary>
     
-      <category term="默认分类" scheme="http://yoursite.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+      <category term="默认分类" scheme="http://lingchenjie.club/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
     
     
-      <category term="android" scheme="http://yoursite.com/tags/android/"/>
+      <category term="android" scheme="http://lingchenjie.club/tags/android/"/>
     
-      <category term="框架" scheme="http://yoursite.com/tags/%E6%A1%86%E6%9E%B6/"/>
+      <category term="框架" scheme="http://lingchenjie.club/tags/%E6%A1%86%E6%9E%B6/"/>
     
-      <category term="Retrofit" scheme="http://yoursite.com/tags/Retrofit/"/>
+      <category term="Retrofit" scheme="http://lingchenjie.club/tags/Retrofit/"/>
     
   </entry>
   
   <entry>
     <title>android6.0运行时权限</title>
-    <link href="http://yoursite.com/2018/03/12/android6.0%E8%BF%90%E8%A1%8C%E6%97%B6%E6%9D%83%E9%99%90/"/>
-    <id>http://yoursite.com/2018/03/12/android6.0运行时权限/</id>
+    <link href="http://lingchenjie.club/2018/03/12/android6.0%E8%BF%90%E8%A1%8C%E6%97%B6%E6%9D%83%E9%99%90/"/>
+    <id>http://lingchenjie.club/2018/03/12/android6.0运行时权限/</id>
     <published>2018-03-12T08:11:14.000Z</published>
     <updated>2018-03-18T11:41:21.678Z</updated>
     
@@ -219,17 +219,17 @@
     
     </summary>
     
-      <category term="默认分类" scheme="http://yoursite.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+      <category term="默认分类" scheme="http://lingchenjie.club/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
     
     
-      <category term="android" scheme="http://yoursite.com/tags/android/"/>
+      <category term="android" scheme="http://lingchenjie.club/tags/android/"/>
     
   </entry>
   
   <entry>
     <title>Retrofit配合RxJava使用</title>
-    <link href="http://yoursite.com/2018/03/10/Retrofit%E9%85%8D%E5%90%88RxJava%E4%BD%BF%E7%94%A8/"/>
-    <id>http://yoursite.com/2018/03/10/Retrofit配合RxJava使用/</id>
+    <link href="http://lingchenjie.club/2018/03/10/Retrofit%E9%85%8D%E5%90%88RxJava%E4%BD%BF%E7%94%A8/"/>
+    <id>http://lingchenjie.club/2018/03/10/Retrofit配合RxJava使用/</id>
     <published>2018-03-10T08:21:11.000Z</published>
     <updated>2018-03-18T11:42:49.631Z</updated>
     
@@ -241,23 +241,23 @@
     
     </summary>
     
-      <category term="默认分类" scheme="http://yoursite.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+      <category term="默认分类" scheme="http://lingchenjie.club/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
     
     
-      <category term="android" scheme="http://yoursite.com/tags/android/"/>
+      <category term="android" scheme="http://lingchenjie.club/tags/android/"/>
     
-      <category term="框架" scheme="http://yoursite.com/tags/%E6%A1%86%E6%9E%B6/"/>
+      <category term="框架" scheme="http://lingchenjie.club/tags/%E6%A1%86%E6%9E%B6/"/>
     
-      <category term="Retrofit" scheme="http://yoursite.com/tags/Retrofit/"/>
+      <category term="Retrofit" scheme="http://lingchenjie.club/tags/Retrofit/"/>
     
-      <category term="RxJava" scheme="http://yoursite.com/tags/RxJava/"/>
+      <category term="RxJava" scheme="http://lingchenjie.club/tags/RxJava/"/>
     
   </entry>
   
   <entry>
     <title>Retrofit学习记录</title>
-    <link href="http://yoursite.com/2018/03/06/Retrofit%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
-    <id>http://yoursite.com/2018/03/06/Retrofit学习记录/</id>
+    <link href="http://lingchenjie.club/2018/03/06/Retrofit%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    <id>http://lingchenjie.club/2018/03/06/Retrofit学习记录/</id>
     <published>2018-03-06T02:33:53.000Z</published>
     <updated>2018-03-18T11:43:08.455Z</updated>
     
@@ -269,21 +269,21 @@
     
     </summary>
     
-      <category term="默认分类" scheme="http://yoursite.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+      <category term="默认分类" scheme="http://lingchenjie.club/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
     
     
-      <category term="android" scheme="http://yoursite.com/tags/android/"/>
+      <category term="android" scheme="http://lingchenjie.club/tags/android/"/>
     
-      <category term="框架" scheme="http://yoursite.com/tags/%E6%A1%86%E6%9E%B6/"/>
+      <category term="框架" scheme="http://lingchenjie.club/tags/%E6%A1%86%E6%9E%B6/"/>
     
-      <category term="Retrofit" scheme="http://yoursite.com/tags/Retrofit/"/>
+      <category term="Retrofit" scheme="http://lingchenjie.club/tags/Retrofit/"/>
     
   </entry>
   
   <entry>
     <title>RxJava的学习记录</title>
-    <link href="http://yoursite.com/2018/03/05/RxJava%E7%9A%84%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
-    <id>http://yoursite.com/2018/03/05/RxJava的学习记录/</id>
+    <link href="http://lingchenjie.club/2018/03/05/RxJava%E7%9A%84%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    <id>http://lingchenjie.club/2018/03/05/RxJava的学习记录/</id>
     <published>2018-03-05T08:53:23.000Z</published>
     <updated>2018-03-18T11:43:16.938Z</updated>
     
@@ -295,21 +295,21 @@
     
     </summary>
     
-      <category term="默认分类" scheme="http://yoursite.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+      <category term="默认分类" scheme="http://lingchenjie.club/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
     
     
-      <category term="android" scheme="http://yoursite.com/tags/android/"/>
+      <category term="android" scheme="http://lingchenjie.club/tags/android/"/>
     
-      <category term="框架" scheme="http://yoursite.com/tags/%E6%A1%86%E6%9E%B6/"/>
+      <category term="框架" scheme="http://lingchenjie.club/tags/%E6%A1%86%E6%9E%B6/"/>
     
-      <category term="RxJava" scheme="http://yoursite.com/tags/RxJava/"/>
+      <category term="RxJava" scheme="http://lingchenjie.club/tags/RxJava/"/>
     
   </entry>
   
   <entry>
     <title>自己动手搭建ShadowSocks的教程</title>
-    <link href="http://yoursite.com/2018/03/04/%E8%87%AA%E5%B7%B1%E5%8A%A8%E6%89%8B%E6%90%AD%E5%BB%BAShadowSocks%E7%9A%84%E6%95%99%E7%A8%8B/"/>
-    <id>http://yoursite.com/2018/03/04/自己动手搭建ShadowSocks的教程/</id>
+    <link href="http://lingchenjie.club/2018/03/04/%E8%87%AA%E5%B7%B1%E5%8A%A8%E6%89%8B%E6%90%AD%E5%BB%BAShadowSocks%E7%9A%84%E6%95%99%E7%A8%8B/"/>
+    <id>http://lingchenjie.club/2018/03/04/自己动手搭建ShadowSocks的教程/</id>
     <published>2018-03-04T03:08:49.000Z</published>
     <updated>2018-03-18T11:43:35.432Z</updated>
     
@@ -321,17 +321,17 @@
     
     </summary>
     
-      <category term="默认分类" scheme="http://yoursite.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+      <category term="默认分类" scheme="http://lingchenjie.club/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
     
     
-      <category term="ShadowSocks" scheme="http://yoursite.com/tags/ShadowSocks/"/>
+      <category term="ShadowSocks" scheme="http://lingchenjie.club/tags/ShadowSocks/"/>
     
   </entry>
   
   <entry>
     <title>dagger2的学习记录(应用)</title>
-    <link href="http://yoursite.com/2018/03/03/dagger2%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-%E5%BA%94%E7%94%A8/"/>
-    <id>http://yoursite.com/2018/03/03/dagger2学习记录-应用/</id>
+    <link href="http://lingchenjie.club/2018/03/03/dagger2%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-%E5%BA%94%E7%94%A8/"/>
+    <id>http://lingchenjie.club/2018/03/03/dagger2学习记录-应用/</id>
     <published>2018-03-03T15:26:16.000Z</published>
     <updated>2018-03-18T11:41:57.328Z</updated>
     
@@ -343,21 +343,21 @@
     
     </summary>
     
-      <category term="默认分类" scheme="http://yoursite.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+      <category term="默认分类" scheme="http://lingchenjie.club/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
     
     
-      <category term="android" scheme="http://yoursite.com/tags/android/"/>
+      <category term="android" scheme="http://lingchenjie.club/tags/android/"/>
     
-      <category term="框架" scheme="http://yoursite.com/tags/%E6%A1%86%E6%9E%B6/"/>
+      <category term="框架" scheme="http://lingchenjie.club/tags/%E6%A1%86%E6%9E%B6/"/>
     
-      <category term="dagger2" scheme="http://yoursite.com/tags/dagger2/"/>
+      <category term="dagger2" scheme="http://lingchenjie.club/tags/dagger2/"/>
     
   </entry>
   
   <entry>
     <title>dagger2的学习记录(进阶)</title>
-    <link href="http://yoursite.com/2018/03/02/dagger2%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-%E8%BF%9B%E9%98%B6/"/>
-    <id>http://yoursite.com/2018/03/02/dagger2学习记录-进阶/</id>
+    <link href="http://lingchenjie.club/2018/03/02/dagger2%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95-%E8%BF%9B%E9%98%B6/"/>
+    <id>http://lingchenjie.club/2018/03/02/dagger2学习记录-进阶/</id>
     <published>2018-03-02T07:02:53.000Z</published>
     <updated>2018-03-18T11:45:15.507Z</updated>
     
@@ -369,21 +369,21 @@
     
     </summary>
     
-      <category term="默认分类" scheme="http://yoursite.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+      <category term="默认分类" scheme="http://lingchenjie.club/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
     
     
-      <category term="android" scheme="http://yoursite.com/tags/android/"/>
+      <category term="android" scheme="http://lingchenjie.club/tags/android/"/>
     
-      <category term="框架" scheme="http://yoursite.com/tags/%E6%A1%86%E6%9E%B6/"/>
+      <category term="框架" scheme="http://lingchenjie.club/tags/%E6%A1%86%E6%9E%B6/"/>
     
-      <category term="dagger2" scheme="http://yoursite.com/tags/dagger2/"/>
+      <category term="dagger2" scheme="http://lingchenjie.club/tags/dagger2/"/>
     
   </entry>
   
   <entry>
     <title>dagger2的学习记录(入门)</title>
-    <link href="http://yoursite.com/2018/03/01/dagger2%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
-    <id>http://yoursite.com/2018/03/01/dagger2学习记录/</id>
+    <link href="http://lingchenjie.club/2018/03/01/dagger2%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    <id>http://lingchenjie.club/2018/03/01/dagger2学习记录/</id>
     <published>2018-03-01T15:26:16.000Z</published>
     <updated>2018-03-18T11:41:32.859Z</updated>
     
@@ -395,21 +395,21 @@
     
     </summary>
     
-      <category term="默认分类" scheme="http://yoursite.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+      <category term="默认分类" scheme="http://lingchenjie.club/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
     
     
-      <category term="android" scheme="http://yoursite.com/tags/android/"/>
+      <category term="android" scheme="http://lingchenjie.club/tags/android/"/>
     
-      <category term="框架" scheme="http://yoursite.com/tags/%E6%A1%86%E6%9E%B6/"/>
+      <category term="框架" scheme="http://lingchenjie.club/tags/%E6%A1%86%E6%9E%B6/"/>
     
-      <category term="dagger2" scheme="http://yoursite.com/tags/dagger2/"/>
+      <category term="dagger2" scheme="http://lingchenjie.club/tags/dagger2/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2018/02/28/hello-world/"/>
-    <id>http://yoursite.com/2018/02/28/hello-world/</id>
+    <link href="http://lingchenjie.club/2018/02/28/hello-world/"/>
+    <id>http://lingchenjie.club/2018/02/28/hello-world/</id>
     <published>2018-02-28T15:58:07.162Z</published>
     <updated>2018-02-28T15:58:07.163Z</updated>
     
@@ -429,8 +429,8 @@
   
   <entry>
     <title>博客搭建，使用hexo+github</title>
-    <link href="http://yoursite.com/2017/06/18/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%EF%BC%8C%E4%BD%BF%E7%94%A8hexo+github/"/>
-    <id>http://yoursite.com/2017/06/18/博客搭建，使用hexo+github/</id>
+    <link href="http://lingchenjie.club/2017/06/18/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%EF%BC%8C%E4%BD%BF%E7%94%A8hexo+github/"/>
+    <id>http://lingchenjie.club/2017/06/18/博客搭建，使用hexo+github/</id>
     <published>2017-06-18T09:43:27.000Z</published>
     <updated>2018-03-18T11:39:15.026Z</updated>
     
@@ -442,10 +442,10 @@
     
     </summary>
     
-      <category term="默认分类" scheme="http://yoursite.com/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+      <category term="默认分类" scheme="http://lingchenjie.club/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
     
     
-      <category term="博客搭建" scheme="http://yoursite.com/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+      <category term="博客搭建" scheme="http://lingchenjie.club/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
     
   </entry>
   
