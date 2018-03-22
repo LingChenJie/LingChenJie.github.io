@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>http://lingchenjie.club/2018/03/22/Maven%E7%9A%84%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</loc>
+    <lastmod>2018-03-22T10:16:37.352Z</lastmod>
+    <data>
+        <display>
+        <title>Maven的学习记录</title>
+        <pubTime>2018-03-22T08:06:52.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>web框架</tag>
+         
+        <tag>maven</tag>
+         
+         
+           
+             
+              <breadCrumb title="默认分类" url="http://lingchenjie.club/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://lingchenjie.club/2018/03/19/struts2-spring-hibernate%E5%B0%8F%E6%A1%88%E5%88%97/</loc>
     <lastmod>2018-03-22T07:58:18.490Z</lastmod>
     <data>
@@ -17,9 +41,9 @@
          
         <tag>Strust2</tag>
          
-        <tag>spring</tag>
-         
         <tag>hibernate</tag>
+         
+        <tag>spring</tag>
          
          
            
@@ -209,11 +233,11 @@
         <title>Retrofit学习记录</title>
         <pubTime>2018-03-06T02:33:53.000Z</pubTime>
         
+        <tag>Retrofit</tag>
+         
         <tag>android</tag>
          
         <tag>框架</tag>
-         
-        <tag>Retrofit</tag>
          
          
            
@@ -233,11 +257,11 @@
         <title>Retrofit上传下载进度回调</title>
         <pubTime>2018-03-12T08:11:14.000Z</pubTime>
         
+        <tag>Retrofit</tag>
+         
         <tag>android</tag>
          
         <tag>框架</tag>
-         
-        <tag>Retrofit</tag>
          
          
            
@@ -257,11 +281,11 @@
         <title>Retrofit配合RxJava使用</title>
         <pubTime>2018-03-10T08:21:11.000Z</pubTime>
         
+        <tag>Retrofit</tag>
+         
         <tag>android</tag>
          
         <tag>框架</tag>
-         
-        <tag>Retrofit</tag>
          
         <tag>RxJava</tag>
          

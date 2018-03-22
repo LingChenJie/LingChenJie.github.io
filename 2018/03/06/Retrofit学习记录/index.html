@@ -17,7 +17,7 @@
 
 
 
-  <meta name="keywords" content="android,框架,Retrofit,">
+  <meta name="keywords" content="Retrofit,android,框架,">
 
 
 
@@ -36,7 +36,7 @@
 
 
 <meta name="description" content="记录Retrofit的学习过程">
-<meta name="keywords" content="android,框架,Retrofit">
+<meta name="keywords" content="Retrofit,android,框架">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Retrofit学习记录">
 <meta property="og:url" content="http://lingchenjie.club/2018/03/06/Retrofit学习记录/index.html">
@@ -166,7 +166,6 @@
 <h4 id="5-数据解析器（Converter）"><a href="#5-数据解析器（Converter）" class="headerlink" title="5.数据解析器（Converter）"></a>5.数据解析器（Converter）</h4><blockquote>
 <p>默认情况下，调用请求返回的结果都是Call<responsebody>，Converter可以为我们将ResponseBody转换为我们想要的类型。我们经常使用的GsonConverterFactory可以很方便的把服务端返回的json数据转为我们需要的对象，被@Body注解的的对象将会被Gson转换成RequestBody发送到服务器<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入依赖</span></span><br><span class="line">compile <span class="string">'com.squareup.retrofit2:converter-gson:2.0.2'</span></span><br><span class="line"></span><br><span class="line">Retrofit retrofit = <span class="keyword">new</span> Retrofit.Builder()</span><br><span class="line">		.baseUrl(BASE_URL) <span class="comment">// 设置网络请求的Url地址</span></span><br><span class="line">		.addConverterFactory(GsonConverterFactory.create()) <span class="comment">// 设置数据解析器</span></span><br><span class="line">		.build();</span><br><span class="line">		</span><br><span class="line"><span class="comment">// 自动将我们的结果转为对应的对象</span></span><br><span class="line"><span class="meta">@GET</span>(<span class="string">"blog/&#123;id&#125;"</span>)</span><br><span class="line">Call&lt;Result&lt;Book&gt;&gt; getBook(<span class="meta">@Path</span>(<span class="string">"id"</span>) <span class="keyword">int</span> id);</span><br></pre></td></tr></table></figure></responsebody></p>
 </blockquote>
-
             </div>
           
 
@@ -175,11 +174,11 @@
 		
 		<div class="post-tags">
 		  
+			<a href="/tags/Retrofit/">Retrofit</a>
+		  
 			<a href="/tags/android/">android</a>
 		  
 			<a href="/tags/框架/">框架</a>
-		  
-			<a href="/tags/Retrofit/">Retrofit</a>
 		  
 		</div>
 		
@@ -191,13 +190,13 @@
       <a class="prev" href="/2018/03/10/Retrofit配合RxJava使用/">
         <i class="iconfont icon-left"></i>
         <span class="prev-text nav-default">Retrofit配合RxJava使用</span>
-        <span class="prev-text nav-mobile">Prev</span>
+        <span class="prev-text nav-mobile">上一篇</span>
       </a>
     
     
       <a class="next" href="/2018/03/05/RxJava的学习记录/">
         <span class="next-text nav-default">RxJava的学习记录</span>
-        <span class="prev-text nav-mobile">Next</span>
+        <span class="prev-text nav-mobile">下一篇</span>
         <i class="iconfont icon-right"></i>
       </a>
     
@@ -226,7 +225,7 @@
     2018
     <span class="footer-author">John Doe.</span>
     <span class="power-by">
-        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+        由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a> 强力驱动
     </span>
 </span>
 

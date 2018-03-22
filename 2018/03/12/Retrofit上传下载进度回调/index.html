@@ -17,7 +17,7 @@
 
 
 
-  <meta name="keywords" content="android,框架,Retrofit,">
+  <meta name="keywords" content="Retrofit,android,框架,">
 
 
 
@@ -36,7 +36,7 @@
 
 
 <meta name="description" content="记录Retrofit上传下载进度回调">
-<meta name="keywords" content="android,框架,Retrofit">
+<meta name="keywords" content="Retrofit,android,框架">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Retrofit上传下载进度回调">
 <meta property="og:url" content="http://lingchenjie.club/2018/03/12/Retrofit上传下载进度回调/index.html">
@@ -156,7 +156,6 @@
 <blockquote>
 <p>2.使用Retrofit+RxJava实现文件上传<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.定义接口</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">AppService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Multipart</span></span><br><span class="line">    <span class="meta">@POST</span>(<span class="string">"upload"</span>)</span><br><span class="line">    Observable&lt;BaseResultEntity&lt;UploadResult&gt;&gt; upload(<span class="meta">@Part</span>(<span class="string">"des"</span>) RequestBody des, <span class="meta">@Part</span> MultipartBody.Part file);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.省略 ProgressRequestBody 和 ProgressRequestListener，见上面OkHttp的上传文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 3.创建RequestBody对象</span></span><br><span class="line">File file=<span class="keyword">new</span> File(<span class="string">"..."</span>);</span><br><span class="line">RequestBody requestBody = RequestBody.create(MediaType.parse(<span class="string">"image/jpeg"</span>),file);</span><br><span class="line">ProgressRequestBody progressRequestBody = <span class="keyword">new</span> ProgressRequestBody(requestBody, progressRequestListener)</span><br><span class="line">MultipartBody.Part part = MultipartBody.Part.createFormData(<span class="string">"file_name"</span>, file.getName(), progressRequestBody);</span><br><span class="line"></span><br><span class="line">AppService service = retrofit.create(AppService.class);</span><br><span class="line">RequestBody des = RequestBody.create(MediaType.parse(<span class="string">"text/plain"</span>), <span class="string">"这是描述"</span>);</span><br><span class="line">service.upload(des, part);</span><br></pre></td></tr></table></figure></p>
 </blockquote>
-
             </div>
           
 
@@ -165,11 +164,11 @@
 		
 		<div class="post-tags">
 		  
+			<a href="/tags/Retrofit/">Retrofit</a>
+		  
 			<a href="/tags/android/">android</a>
 		  
 			<a href="/tags/框架/">框架</a>
-		  
-			<a href="/tags/Retrofit/">Retrofit</a>
 		  
 		</div>
 		
@@ -181,13 +180,13 @@
       <a class="prev" href="/2018/03/15/Mybatis的学习记录/">
         <i class="iconfont icon-left"></i>
         <span class="prev-text nav-default">Mybatis的学习记录</span>
-        <span class="prev-text nav-mobile">Prev</span>
+        <span class="prev-text nav-mobile">上一篇</span>
       </a>
     
     
       <a class="next" href="/2018/03/12/android6.0运行时权限/">
         <span class="next-text nav-default">android6.0运行时权限</span>
-        <span class="prev-text nav-mobile">Next</span>
+        <span class="prev-text nav-mobile">下一篇</span>
         <i class="iconfont icon-right"></i>
       </a>
     
@@ -216,7 +215,7 @@
     2018
     <span class="footer-author">John Doe.</span>
     <span class="power-by">
-        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+        由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a> 强力驱动
     </span>
 </span>
 

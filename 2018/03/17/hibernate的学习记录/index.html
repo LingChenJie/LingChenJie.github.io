@@ -262,7 +262,6 @@
 <blockquote>
 <p>③测试<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Many2ManyTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//保存员工以及角色</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Session session = HibernateUtils.openSession();</span><br><span class="line">        Transaction tx = session.beginTransaction();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//-------</span></span><br><span class="line">        <span class="comment">//1&gt; 创建两个 User</span></span><br><span class="line">        User u1 = <span class="keyword">new</span> User();</span><br><span class="line">        u1.setUser_name(<span class="string">"杰辰"</span>);</span><br><span class="line"></span><br><span class="line">        User u2 = <span class="keyword">new</span> User();</span><br><span class="line">        u2.setUser_name(<span class="string">"杰辰2"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2&gt; 创建两个 Role</span></span><br><span class="line">        Role r1 = <span class="keyword">new</span> Role();</span><br><span class="line">        r1.setRole_name(<span class="string">"小明"</span>);</span><br><span class="line"></span><br><span class="line">        Role r2 = <span class="keyword">new</span> Role();</span><br><span class="line">        r2.setRole_name(<span class="string">"小张"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//3&gt; 用户表达关系</span></span><br><span class="line">        u1.getRoles().add(r1);</span><br><span class="line">        u1.getRoles().add(r2);</span><br><span class="line"></span><br><span class="line">        u2.getRoles().add(r1);</span><br><span class="line">        u2.getRoles().add(r2);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//4&gt; 角色表达关系</span></span><br><span class="line"><span class="comment">//        r1.getUsers().add(u1);  由user进行维护关系，级联操作</span></span><br><span class="line"><span class="comment">//        r1.getUsers().add(u2);</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//        r2.getUsers().add(u1);</span></span><br><span class="line"><span class="comment">//        r2.getUsers().add(u2);</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//5&gt; 调用Save方法一次保存</span></span><br><span class="line">        session.save(u1);</span><br><span class="line">        session.save(u2);</span><br><span class="line"><span class="comment">//        session.save(r1);</span></span><br><span class="line"><span class="comment">//        session.save(r2);</span></span><br><span class="line">        <span class="comment">//---------</span></span><br><span class="line"></span><br><span class="line">        tx.commit();</span><br><span class="line">        session.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </blockquote>
-
             </div>
           
 
@@ -287,13 +286,13 @@
       <a class="prev" href="/2018/03/19/Struts2的学习记录/">
         <i class="iconfont icon-left"></i>
         <span class="prev-text nav-default">Struts2的学习记录</span>
-        <span class="prev-text nav-mobile">Prev</span>
+        <span class="prev-text nav-mobile">上一篇</span>
       </a>
     
     
       <a class="next" href="/2018/03/15/Mybatis的学习记录/">
         <span class="next-text nav-default">Mybatis的学习记录</span>
-        <span class="prev-text nav-mobile">Next</span>
+        <span class="prev-text nav-mobile">下一篇</span>
         <i class="iconfont icon-right"></i>
       </a>
     
@@ -322,7 +321,7 @@
     2018
     <span class="footer-author">John Doe.</span>
     <span class="power-by">
-        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+        由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a> 强力驱动
     </span>
 </span>
 
