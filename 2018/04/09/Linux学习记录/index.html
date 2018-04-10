@@ -44,7 +44,7 @@
 <meta property="og:description" content="记录Linux的学习笔记">
 <meta property="og:image" content="http://lingchenjie.club/2018/04/09/Linux学习记录/linux_1.png">
 <meta property="og:image" content="http://lingchenjie.club/2018/04/09/Linux学习记录/linux_2.png">
-<meta property="og:updated_time" content="2018-04-09T15:14:11.619Z">
+<meta property="og:updated_time" content="2018-04-10T03:43:11.080Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux学习记录">
 <meta name="twitter:description" content="记录Linux的学习笔记">
@@ -150,8 +150,47 @@
 <p>5.其他命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">grep to /etc/sudo.conf		<span class="comment"># 搜索 /etc/sudu.conf 文件中包含字符串 to 的行</span></span><br><span class="line">grep to /etc/sudo.conf --color		<span class="comment"># 搜索 /etc/sudu.conf 文件中包含字符串 to 的行并高亮显示</span></span><br><span class="line"></span><br><span class="line">ps -ef | grep system		<span class="comment"># 查看当前系统中所有的进程中包括 system 字符串的进程</span></span><br><span class="line">		<span class="comment"># |: 管道命令，将前一个命令的输出作为本次目录的输入</span></span><br><span class="line">		<span class="comment"># ps -ef：查看当前系统中运行的进程</span></span><br><span class="line">		</span><br><span class="line"><span class="built_in">kill</span> -9 进程的pid		<span class="comment"># 杀死进程</span></span><br><span class="line">ifconfig		<span class="comment"># 查看当前系统的网卡信息</span></span><br><span class="line">ping xxx		<span class="comment"># 查看与某台机器的连接情况</span></span><br><span class="line"></span><br><span class="line">netstat -an		<span class="comment"># 查看当前系统的端口使用</span></span><br></pre></td></tr></table></figure></p>
 <p>6.Linux的权限命令<br><img src="/2018/04/09/Linux学习记录/linux_2.png" alt="Linux"><br>文件的类型：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">d：代表目录</span><br><span class="line">-：代表文件</span><br><span class="line">l：代表链接（可以认为是window中的快捷方式）</span><br></pre></td></tr></table></figure></p>
 <p>后面的 9 位分为 3 组，每 3 位置一组，分别代表属主的权限，与当前用户同组的用户的权限，其他用户的权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">r：代表权限是可读，r 也可以用数字 4 表示</span><br><span class="line">w：代表权限是可写，w 也可以用数字 2 表示</span><br><span class="line">x：代表权限是可执行，x 也可以用数字 1 表示</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod u=rwx,g=rw,o=r aaa.txt		<span class="comment"># aaa.txt 的权限为属主有全部权限，属主所在的组有读写权限，</span></span><br><span class="line">其他用户只有读的权限</span><br><span class="line">chmod 764 aaa.txt		<span class="comment"># 可以使用数字表示</span></span><br></pre></td></tr></table></figure>
-<h4 id="远程连接工具的使用"><a href="#远程连接工具的使用" class="headerlink" title="远程连接工具的使用"></a>远程连接工具的使用</h4><p>本文使用 SSH Secure 进行连接 Linux 并操作它</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod u=rwx,g=rw,o=r aaa.txt		<span class="comment"># aaa.txt 的权限为属主有全部权限，属主所在的组有读写权限，其他用户只有读的权限</span></span><br><span class="line">chmod 764 aaa.txt		<span class="comment"># 可以使用数字表示</span></span><br></pre></td></tr></table></figure>
+<h4 id="远程连接工具的使用"><a href="#远程连接工具的使用" class="headerlink" title="远程连接工具的使用"></a>远程连接工具的使用</h4><p>本文使用 <a href="https://cdn.netsarang.net/94655810/Xshell-5.0.1339p.exe" target="_blank" rel="noopener">Xshell</a> 进行连接 Linux 并操作它</p>
+<p>关于远程工具乱码的解决</p>
+<blockquote>
+<p>尝试修改 linux 中的 /etc/sysconfig 目录下的 i18n 文件为 <code>LANG=&quot;zh_CN.GBK&quot;</code> 或 <code>LANG=&quot;zh_CN.UTF-8&quot;</code></p>
+</blockquote>
+<h4 id="用-rz、sz-命令在-Xshell-传输文件"><a href="#用-rz、sz-命令在-Xshell-传输文件" class="headerlink" title="用 rz、sz 命令在 Xshell 传输文件"></a>用 rz、sz 命令在 Xshell 传输文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yum install lrzsz -y		<span class="comment"># 安装rz、sz</span></span><br><span class="line">rz		<span class="comment"># 接收文件，Xshell 就会弹出文件选择对话框，选好文件之后关闭对话框，文件就会上传到 linux 里的当前目录</span></span><br><span class="line">sz file		<span class="comment"># 发文件到 windows 上</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 注：更简便的方法是直接拖动文件到 Xshell 里面，就可以完成上传</span></span><br></pre></td></tr></table></figure>
+<h4 id="Linux-的软件安装"><a href="#Linux-的软件安装" class="headerlink" title="Linux 的软件安装"></a>Linux 的软件安装</h4><p>1.JDK安装</p>
+<p>rpm 与软件相关命令 相当于 window 下的软件助手 管理软件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep java		<span class="comment"># 查看当前 Linux 系统是否已经安装 java</span></span><br><span class="line">rpm -e --nodeps 要卸载的软件		<span class="comment"># 卸载指定的软件</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>① 上传 jdk 到 linux<br>② 安装 jdk 运行需要的插件 <code>yum install glibc.i686</code>（选做）<br>③ 解压 jdk 到 /usr/local 下 <code>tar –xvf jdk-7u71-linux-i586.tar.gz –C /usr/local</code><br>④ 配置 jdk 环境变量，打开 /etc/profile 配置文件，将下面配置拷贝进去<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># set java environment</span></span><br><span class="line">JAVA_HOME=/usr/<span class="built_in">local</span>/jdk1.7.0_71</span><br><span class="line">CLASSPATH=.:<span class="variable">$JAVA_HOME</span>/lib.tools.jar</span><br><span class="line">PATH=<span class="variable">$JAVA_HOME</span>/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">export</span> JAVA_HOME CLASSPATH PATH</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>⑤ 重新加载 /etc/profil e配置文件 <code>source /etc/profile</code><br>⑥ 检验是否成功 <code>java -version</code>  </p>
+</blockquote>
+<p>2.Mysql 的安装</p>
+<blockquote>
+<p>① 查看 CentOS 自带的 MySql <code>rpm -qa | grep  mysql</code><br>② 将自带的 MySql 卸载 <code>rpm -e --nodeps mysql-libs-xxx</code><br>③ 上传 Mysql 到 Linux<br>④ 安装 Mysql 的依赖（选做）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum -y install libaio.so.1 libgcc_s.so.1 libstdc++.so.6</span><br><span class="line">yum  update libstdc++-4.4.7-4.el6.x86_64</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>⑤ 解压 Mysql 到 /usr/local/ 下的 mysql 目录( mysql 目录需要手动创建)内<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span></span><br><span class="line">mkdir mysql</span><br><span class="line">tar -xvf MySQL-5.6.22-1.el6.i686.rpm-bundle.tar -C /usr/<span class="built_in">local</span>/mysql</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>⑥ 在 /usr/local/mysql 下安装 mysql<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh MySQL-server-5.6.22-1.el6.i686.rpm		<span class="comment"># 安装服务器端</span></span><br><span class="line">rpm -ivh MySQL-client-5.6.22-1.el6.i686.rpm		<span class="comment"># 安装客户端</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>⑦ 启动 mysql <code>service mysql start</code><br>⑧ 将 mysql 加到系统服务中并设置开机启动<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chkconfig --add mysql		<span class="comment"># 加入到系统服务</span></span><br><span class="line">chkconfig mysql on		<span class="comment"># 自动启动</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>⑨ 登录 mysql，mysql 安装好后会生成一个临时随机密码，存储位置在 /root/.mysql_secret<br>⑩ 登录 mysql 后，修改 mysql 的密码，<code>set password = password(&#39;654321&#39;);</code><br>11 开启 mysql 的远程登录<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 默认情况下 mysql 为安全起见，不支持远程登录 mysql，所以需要设置开启远程登录 mysql 的权限</span></span><br><span class="line"><span class="comment"># 登录mysql后输入如下命令：</span></span><br><span class="line">grant all privileges on *.* to <span class="string">'root'</span> @<span class="string">'%'</span> identified by <span class="string">'root'</span>;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>12 开放 Linux 的对外访问的端口 3306<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/sbin/iptables -I INPUT -p tcp --dport 3306 -j ACCEPT</span><br><span class="line">/etc/rc.d/init.d/iptables save <span class="comment"># 将修改永久保存到防火墙中</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>3.Tomcat 的安装</p>
+<blockquote>
+<p>① 上传 Tomcat 到 Linux<br>② 解压 Tomcat 到 /usr/local 下<br>③ 开放 Linux 的对外访问的端口 8080<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/sbin/iptables -I INPUT -p tcp --dport 8080 -j ACCEPT</span><br><span class="line">/etc/rc.d/init.d/iptables save</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>④ 启动关闭 Tomcat<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">进入 tomcat 的 bin 下启动：./startup.sh</span><br><span class="line">进入 tomcat 的 bin 下关闭：./shutdown.sh</span><br></pre></td></tr></table></figure></p>
+</blockquote>
             </div>
           
 
