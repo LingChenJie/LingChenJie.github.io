@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="description" content="回顾MySQL与JDBC">
+
+
+
+
+  <meta name="keywords" content="MySQL,JDBC,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="JieChen">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon2.ico?v=1.1">
+
+
+
+<link rel="canonical" href="http://lingchenjie.club/2018/04/10/MySQL与JDBC回顾/">
+
+
+<meta name="description" content="回顾MySQL与JDBC">
+<meta name="keywords" content="MySQL,JDBC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL与JDBC的回顾">
+<meta property="og:url" content="http://lingchenjie.club/2018/04/10/MySQL与JDBC回顾/index.html">
+<meta property="og:site_name" content="JieChen">
+<meta property="og:description" content="回顾MySQL与JDBC">
+<meta property="og:updated_time" content="2018-04-10T09:08:42.240Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL与JDBC的回顾">
+<meta name="twitter:description" content="回顾MySQL与JDBC">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> MySQL与JDBC的回顾 - JieChen </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">JieChen</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          MySQL与JDBC的回顾
+        
+      </h1>
+
+      <time class="post-time">
+          Apr 10 2018
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>[<em>writer：<a href="https://lingchenjie.github.io/about/" target="_blank" rel="noopener">杰辰</a> </em>]</p>
+<h4 id="对数据库的操作"><a href="#对数据库的操作" class="headerlink" title="对数据库的操作"></a>对数据库的操作</h4><p>1.创建一个数据库<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">create database my_db;	<span class="comment"># 创建名为 my_db 的数据库</span></span><br><span class="line">create database my_db <span class="built_in">set</span> utf-8;	<span class="comment"># 创建名为 my_db 的数据库，编码为 utf-8</span></span><br></pre></td></tr></table></figure></p>
+<p>2.删除一个数据库<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop database my_db;	<span class="comment"># 删除名为 my_db 的数据库</span></span><br></pre></td></tr></table></figure></p>
+<p>3.使用某个数据库<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use my_db;	<span class="comment"># 使用 my_db 这个数据库</span></span><br></pre></td></tr></table></figure></p>
+<p>4.查看当前正在使用的数据库<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select database();	<span class="comment"># 查看当前使用的库</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="对数据库中表的操作"><a href="#对数据库中表的操作" class="headerlink" title="对数据库中表的操作"></a>对数据库中表的操作</h4><p>1.创建一张表<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一张 user 表</span></span><br><span class="line">create table user(</span><br><span class="line">	uid int(32) primary key auto_increment,</span><br><span class="line">	uname varchar(32),</span><br><span class="line">	upassword varchar(32)</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+<p>2.对表的操作<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">show tables; <span class="comment"># 查看有哪些表</span></span><br><span class="line">desc user;	<span class="comment"># 查看表结构</span></span><br><span class="line">drop table user;	<span class="comment"># 删除 user 表</span></span><br><span class="line"></span><br><span class="line">alter table user add uinfo varcher(32) not null;	<span class="comment"># 添加一列</span></span><br><span class="line">alter table user modify uinfo varchar(100) null;	<span class="comment"># 修改列的类型</span></span><br><span class="line">alter table user change uinfo info varchar(32) not null;	<span class="comment"># 修改表的列名</span></span><br><span class="line"></span><br><span class="line">alter table user drop info;	<span class="comment"># 删除表的列</span></span><br><span class="line">rename table user to t_user;	<span class="comment"># 修改表名</span></span><br><span class="line">alter table user character <span class="built_in">set</span> gbk;	<span class="comment"># 修改表的字符集</span></span><br><span class="line"></span><br><span class="line">show create table user;	<span class="comment"># 查看表的创建</span></span><br></pre></td></tr></table></figure></p>
+<p>3.对表记录的操作<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">insert into user(uid,uname,upassword) values(null,<span class="string">'jiechen'</span>,<span class="string">'123456'</span>);	<span class="comment"># 插入一条记录</span></span><br><span class="line">insert into user values(null,<span class="string">'jiechen'</span>,<span class="string">'123456'</span>);	<span class="comment"># 插入一条记录</span></span><br><span class="line"><span class="built_in">set</span> names gbk;	<span class="comment"># 解决插入数据中文乱码问题</span></span><br><span class="line"></span><br><span class="line">update user <span class="built_in">set</span> upassword=<span class="string">'654321'</span> <span class="built_in">where</span> uid=1;	<span class="comment"># 更新</span></span><br><span class="line">delete from user <span class="built_in">where</span> uid=1;	<span class="comment"># 删除</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注：delete 与 truncate 的区别<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">delete 删除的时候是一条一条的删除记录，它配合事务，可以将删除的数据找回</span><br><span class="line">truncate 删除是将整个表摧毁，然后再创建一张一模一样的表，它删除的数据无法找回</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>4.表的查询<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">select * from user;</span><br><span class="line">select uname,upassword from user;</span><br><span class="line"></span><br><span class="line">select distinct(price) from product;	<span class="comment"># 去掉重复值(按照价格)</span></span><br><span class="line">select * from user wehre uname=<span class="string">'jiechen'</span>;	<span class="comment"># 条件查询</span></span><br><span class="line">select * from user <span class="built_in">where</span> uid <span class="keyword">in</span>(1,2,3);	<span class="comment"># 查询 uid 为1,2,3</span></span><br><span class="line"></span><br><span class="line">select * from user order by uid asc;	<span class="comment"># 根据 uid 升序查询，默认升序</span></span><br><span class="line">select * from user order by uid desc;	<span class="comment"># 降序查询</span></span><br><span class="line"></span><br><span class="line">select sum(price) from product;	<span class="comment"># 计算总和，聚合函数 sum/avg/count</span></span><br><span class="line">seelct id,avg(age) from user group by uid having avg(age)&gt;20;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询模板</span></span><br><span class="line">select</span><br><span class="line">		</span><br><span class="line">from</span><br><span class="line"></span><br><span class="line"><span class="built_in">where</span></span><br><span class="line"></span><br><span class="line">group by</span><br><span class="line"></span><br><span class="line">having <span class="comment"># 分组后带有条件只能使用having</span></span><br><span class="line"></span><br><span class="line">order by</span><br></pre></td></tr></table></figure></p>
+<h4 id="什么是JDBC"><a href="#什么是JDBC" class="headerlink" title="什么是JDBC"></a>什么是JDBC</h4><p>JDBC（Java DataBase Connectivity）就是 Java 数据库连接，JDBC 是用 Java 语言向数据库发送 SQL 语句.JDBC是接口，而JDBC驱动才是接口的实现，没有驱动无法完成数据库连接！每个数据库厂商都有自己的驱动，用来连接自己公司的数据库</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnection</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">	Class.forName(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">	String url = <span class="string">"jdbc:mysql://localhost:3306/my_db"</span>;</span><br><span class="line">	<span class="keyword">return</span> DriverManager.getConnection(url, <span class="string">"root"</span>, <span class="string">"root"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">login</span><span class="params">(String username, String password)</span> </span>&#123;</span><br><span class="line">	Connection con = <span class="keyword">null</span>;</span><br><span class="line">	PreparedStatement pstmt = <span class="keyword">null</span>;</span><br><span class="line">	ResultSet rs = <span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		con = getConnection();</span><br><span class="line">		stmt = con.createStatement();</span><br><span class="line">		String sql = <span class="string">"SELECT * FROM user WHERE username= ? and password= ?"</span>;</span><br><span class="line">		pstmt = con.prepareStatement(sql);</span><br><span class="line">		</span><br><span class="line">		pstmt.setString(<span class="number">1</span>, username);</span><br><span class="line">		pstmt.setString(<span class="number">2</span>, password);</span><br><span class="line">		pstmt.executeQuery();</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(rs.next()) &#123;</span><br><span class="line">			System.out.println(<span class="string">"欢迎"</span> + rs.getString(<span class="string">"username"</span>));</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			System.out.println(<span class="string">"用户名或密码错误！"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e);</span><br><span class="line">	&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="keyword">if</span>(rs != <span class="keyword">null</span>) rs.close();</span><br><span class="line">			<span class="keyword">if</span>(pstmt != <span class="keyword">null</span>) pstmt.close();</span><br><span class="line">			<span class="keyword">if</span>(con != <span class="keyword">null</span>) con.close();</span><br><span class="line">		&#125; <span class="keyword">catch</span>(SQLException e) &#123;&#125;</span><br><span class="line">	&#125;		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/MySQL/">MySQL</a>
+		  
+			<a href="/tags/JDBC/">JDBC</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2018/04/09/Linux学习记录/">
+        <span class="next-text nav-default">Linux学习记录</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2014 -
+    
+    2018
+    <span class="footer-author">John Doe.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
