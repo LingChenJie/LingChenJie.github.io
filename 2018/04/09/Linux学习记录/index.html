@@ -44,7 +44,7 @@
 <meta property="og:description" content="记录Linux的学习笔记">
 <meta property="og:image" content="http://lingchenjie.club/2018/04/09/Linux学习记录/linux_1.png">
 <meta property="og:image" content="http://lingchenjie.club/2018/04/09/Linux学习记录/linux_2.png">
-<meta property="og:updated_time" content="2018-04-17T15:31:27.851Z">
+<meta property="og:updated_time" content="2018-04-18T06:06:03.086Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux学习记录">
 <meta name="twitter:description" content="记录Linux的学习笔记">
@@ -158,6 +158,9 @@
 </blockquote>
 <h4 id="用-rz、sz-命令在-Xshell-传输文件"><a href="#用-rz、sz-命令在-Xshell-传输文件" class="headerlink" title="用 rz、sz 命令在 Xshell 传输文件"></a>用 rz、sz 命令在 Xshell 传输文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yum install lrzsz -y		<span class="comment"># 安装rz、sz</span></span><br><span class="line">rz		<span class="comment"># 接收文件，Xshell 就会弹出文件选择对话框，选好文件之后关闭对话框，文件就会上传到 linux 里的当前目录</span></span><br><span class="line">sz file		<span class="comment"># 发文件到 windows 上</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 注：更简便的方法是直接拖动文件到 Xshell 里面，就可以完成上传</span></span><br></pre></td></tr></table></figure>
 <h4 id="Linux-的软件安装"><a href="#Linux-的软件安装" class="headerlink" title="Linux 的软件安装"></a>Linux 的软件安装</h4><p>1.JDK安装</p>
+<blockquote>
+<p>参考：<a href="http://os.51cto.com/art/201609/517037.htm" target="_blank" rel="noopener">CentOS下安装JDK的三种方法</a></p>
+</blockquote>
 <p>rpm 与软件相关命令 相当于 window 下的软件助手 管理软件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep java		<span class="comment"># 查看当前 Linux 系统是否已经安装 java</span></span><br><span class="line">rpm -e --nodeps 要卸载的软件		<span class="comment"># 卸载指定的软件</span></span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>① 上传 jdk 到 linux<br>② 安装 jdk 运行需要的插件 <code>yum install glibc.i686</code>（选做）<br>③ 解压 jdk 到 /usr/local 下 <code>tar –xvf jdk-7u71-linux-i586.tar.gz –C /usr/local</code><br>④ 配置 jdk 环境变量，打开 /etc/profile 配置文件，将下面配置拷贝进去<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># set java environment</span></span><br><span class="line">JAVA_HOME=/usr/<span class="built_in">local</span>/jdk1.7.0_71</span><br><span class="line">CLASSPATH=.:<span class="variable">$JAVA_HOME</span>/lib.tools.jar</span><br><span class="line">PATH=<span class="variable">$JAVA_HOME</span>/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">export</span> JAVA_HOME CLASSPATH PATH</span><br></pre></td></tr></table></figure></p>
